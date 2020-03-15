@@ -16224,7 +16224,7 @@ and amount of null values for each column:
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="5.3.2.-Completing-the-time-series-with-the-latest-infor-from-Finland-">5.3.2. Completing the time series with the latest infor from Finland <a name="5.3.2." /><a class="anchor-link" href="#5.3.2.-Completing-the-time-series-with-the-latest-infor-from-Finland-">&#182;</a></h4>
+<h4 id="5.3.2.-Completing-the-time-series-with-the-latest-info-from-Finland-">5.3.2. Completing the time series with the latest info from Finland <a name="5.3.2." /><a class="anchor-link" href="#5.3.2.-Completing-the-time-series-with-the-latest-info-from-Finland-">&#182;</a></h4>
 </div>
 </div>
 </div>
@@ -16239,7 +16239,6 @@ and amount of null values for each column:
 <span class="n">finland_confirmed_l</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mf">155.0</span><span class="p">)</span>
 <span class="n">finland_recovered_l</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mf">2.0</span><span class="p">)</span>
 <span class="n">finland_deaths_l</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mf">0.0</span><span class="p">)</span>
-<span class="n">dummy</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mf">0.0</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -16258,7 +16257,6 @@ and amount of null values for each column:
 <span class="n">finland_confirmed_l</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mf">223.0</span><span class="p">)</span>
 <span class="n">finland_recovered_l</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mf">2.0</span><span class="p">)</span>
 <span class="n">finland_deaths_l</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mf">0.0</span><span class="p">)</span>
-<span class="n">dummy</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mf">0.0</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -16277,7 +16275,6 @@ and amount of null values for each column:
 <span class="n">finland_confirmed_l</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mf">225.0</span><span class="p">)</span>
 <span class="n">finland_recovered_l</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mf">10.0</span><span class="p">)</span>
 <span class="n">finland_deaths_l</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mf">0.0</span><span class="p">)</span>
-<span class="n">dummy</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mf">0.0</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -16431,6 +16428,18 @@ and amount of null values for each column:
 </div>
 
 </div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>Description of the plot</strong></p>
+<p>The blue curve represents the cumulative confirmed cases. Government decisions and people behavior can affect the way the blue curve looks like. The aim is to keep the curve not too steep in order not to saturate the capacity of the hospitals in the Country. However, it should be noted that the effects are not immediate due to the incubation period.</p>
+<p>The green curve represents the recovered cases. The goal is trying to match the blue curve as close as possible, at a certain point in time.</p>
+<p>The red curve represents the deceased cases and the goal is obviously to keep it as low as possible.</p>
+<p>Finally, it shall not be forgotten that the actual cases might be higher than the confirmed cases.</p>
+
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[173]:</div>
@@ -16479,6 +16488,15 @@ and amount of null values for each column:
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>Description of the plot</strong></p>
+<p>This plot shows the new daily confirmed cases. Therefore, it shows the speed at which the virus is spreading.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="6.-Conclusions-">6. Conclusions <a name="6." /><a class="anchor-link" href="#6.-Conclusions-">&#182;</a></h2>
 </div>
 </div>
@@ -16501,8 +16519,7 @@ and amount of null values for each column:
 <sub>numpy 1.17.3</sub><br>
 <sub>pandas 0.25.2</sub><br>
 <sub>matplotlib 3.1.2</sub><br>
-<sub>seaborn 0.9.0</sub><br>
-<sub>scikit-learn 0.21.3</sub><br></p>
+<sub>seaborn 0.9.0</sub><br></p>
 
 </div>
 </div>
