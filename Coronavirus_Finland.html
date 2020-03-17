@@ -13084,8 +13084,7 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h5 id="Bernardo-Di-Chiara"><strong>Bernardo Di Chiara</strong><a class="anchor-link" href="#Bernardo-Di-Chiara">&#182;</a></h5><p><em>Last update: March 17<sup>th</sup>, 2020</em></p>
-<p>Last plotted day: March 16<sup>th</sup>, 2020</p>
+<h5 id="Bernardo-Di-Chiara"><strong>Bernardo Di Chiara</strong><a class="anchor-link" href="#Bernardo-Di-Chiara">&#182;</a></h5><p><em>Last plotted day: see the end of the file</em></p>
 
 </div>
 </div>
@@ -16818,19 +16817,6 @@ and amount of null values for each column:
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Completing the time series with the latest info from Finland</strong></p>
-
-</div>
-</div>
-</div># Adding last day info
-# Add manually here the day and the related data
-days_short.append('m/d')
-finland_confirmed_l.append(x.x)
-finland_recovered_l.append(x.x)
-finland_deceased_l.append(x.x)
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
 <h4 id="5.4.2.-Finnish-Data:-Calculating-the-increments-">5.4.2. Finnish Data: Calculating the increments <a name="5.4.2." /><a class="anchor-link" href="#5.4.2.-Finnish-Data:-Calculating-the-increments-">&#182;</a></h4>
 </div>
 </div>
@@ -17497,7 +17483,7 @@ finland_deceased_l.append(x.x)
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[40]:</div>
+<div class="prompt input_prompt">In&nbsp;[37]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># The top 10 Countries by number of confirmed cases in descending order</span>
@@ -17519,14 +17505,14 @@ finland_deceased_l.append(x.x)
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Countries by number of confirmed cases in descending order (top 10)
+<pre>Countries by number of confirmed cases in descending order (top 10):
 </pre>
 </div>
 </div>
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[40]:</div>
+    <div class="prompt output_prompt">Out[37]:</div>
 
 
 
@@ -17634,7 +17620,144 @@ finland_deceased_l.append(x.x)
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[41]:</div>
+<div class="prompt input_prompt">In&nbsp;[38]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># The top 10 Countries by number of recovered cases in descending order</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Countries by number of recovered cases in descending order (top 10):&quot;</span><span class="p">)</span>
+<span class="n">daily_rep_short</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span> <span class="o">=</span><span class="s1">&#39;Recovered&#39;</span><span class="p">,</span> <span class="n">ascending</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Countries by number of recovered cases in descending order (top 10):
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[38]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Confirmed</th>
+      <th>Recovered</th>
+      <th>Deaths</th>
+    </tr>
+    <tr>
+      <th>Country/Region</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>China</th>
+      <td>81033</td>
+      <td>67910</td>
+      <td>3217</td>
+    </tr>
+    <tr>
+      <th>Iran</th>
+      <td>14991</td>
+      <td>4590</td>
+      <td>853</td>
+    </tr>
+    <tr>
+      <th>Italy</th>
+      <td>27980</td>
+      <td>2749</td>
+      <td>2158</td>
+    </tr>
+    <tr>
+      <th>Korea, South</th>
+      <td>8236</td>
+      <td>1137</td>
+      <td>75</td>
+    </tr>
+    <tr>
+      <th>Spain</th>
+      <td>9942</td>
+      <td>530</td>
+      <td>342</td>
+    </tr>
+    <tr>
+      <th>Cruise Ship</th>
+      <td>696</td>
+      <td>325</td>
+      <td>7</td>
+    </tr>
+    <tr>
+      <th>Japan</th>
+      <td>825</td>
+      <td>144</td>
+      <td>27</td>
+    </tr>
+    <tr>
+      <th>Singapore</th>
+      <td>243</td>
+      <td>109</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>Bahrain</th>
+      <td>214</td>
+      <td>77</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>Germany</th>
+      <td>7272</td>
+      <td>67</td>
+      <td>17</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[39]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># The top 10 Countries by number of deceased cases in descending order</span>
@@ -17663,7 +17786,7 @@ finland_deceased_l.append(x.x)
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[41]:</div>
+    <div class="prompt output_prompt">Out[39]:</div>
 
 
 
@@ -17771,12 +17894,12 @@ finland_deceased_l.append(x.x)
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[42]:</div>
+<div class="prompt input_prompt">In&nbsp;[40]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># The top 10 Countries by number of recovered cases in descending order</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Countries by number of recovered cases in descending order (top 10):&quot;</span><span class="p">)</span>
-<span class="n">daily_rep_short</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span> <span class="o">=</span><span class="s1">&#39;Recovered&#39;</span><span class="p">,</span> <span class="n">ascending</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Visualizing the current status in Finland</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Latest situation in Finland:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">daily_rep_short</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;Finland&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">to_string</span><span class="p">())</span>
 </pre></div>
 
     </div>
@@ -17793,113 +17916,12 @@ finland_deceased_l.append(x.x)
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Countries by number of recovered cases in descending order (top 10):
+<pre>Latest situation in Finland:
+Confirmed    277
+Recovered     10
+Deaths         0
 </pre>
 </div>
-</div>
-
-<div class="output_area">
-
-    <div class="prompt output_prompt">Out[42]:</div>
-
-
-
-<div class="output_html rendered_html output_subarea output_execute_result">
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>Confirmed</th>
-      <th>Recovered</th>
-      <th>Deaths</th>
-    </tr>
-    <tr>
-      <th>Country/Region</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>China</th>
-      <td>81033</td>
-      <td>67910</td>
-      <td>3217</td>
-    </tr>
-    <tr>
-      <th>Iran</th>
-      <td>14991</td>
-      <td>4590</td>
-      <td>853</td>
-    </tr>
-    <tr>
-      <th>Italy</th>
-      <td>27980</td>
-      <td>2749</td>
-      <td>2158</td>
-    </tr>
-    <tr>
-      <th>Korea, South</th>
-      <td>8236</td>
-      <td>1137</td>
-      <td>75</td>
-    </tr>
-    <tr>
-      <th>Spain</th>
-      <td>9942</td>
-      <td>530</td>
-      <td>342</td>
-    </tr>
-    <tr>
-      <th>Cruise Ship</th>
-      <td>696</td>
-      <td>325</td>
-      <td>7</td>
-    </tr>
-    <tr>
-      <th>Japan</th>
-      <td>825</td>
-      <td>144</td>
-      <td>27</td>
-    </tr>
-    <tr>
-      <th>Singapore</th>
-      <td>243</td>
-      <td>109</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>Bahrain</th>
-      <td>214</td>
-      <td>77</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>Germany</th>
-      <td>7272</td>
-      <td>67</td>
-      <td>17</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-</div>
-
 </div>
 
 </div>
@@ -17921,6 +17943,45 @@ finland_deceased_l.append(x.x)
 
 </div>
 </div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[41]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Last plotted day:&quot;</span><span class="p">,</span> <span class="n">dt</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">strptime</span><span class="p">(</span><span class="n">last_day</span><span class="p">,</span> <span class="s2">&quot;%m-</span><span class="si">%d</span><span class="s2">-%Y&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">date</span><span class="p">()</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%d</span><span class="s2">-%b-%Y&quot;</span><span class="p">))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Last plotted day: 16-Mar-2020
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
