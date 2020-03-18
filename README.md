@@ -6,6 +6,8 @@ Also, it migth be beneficial to compare Finnish curves with curves from other Co
 
 **If you are not interested in the code used to produce the plots, open the file in this [link](http://htmlpreview.github.io/?https://github.com/BerniHacker/Coronavirus/blob/master/Coronavirus_Finland.html), go to section 6. and focus on the plots and their description.**
 
+---
+
 ## 1. Content of the repository
 
 File name / Description | link
