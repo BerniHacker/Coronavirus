@@ -8,6 +8,41 @@ Also, it migth be beneficial to compare Finnish curves with curves from other Co
 
 File name / Description | link
 :---|:---
+<code>Coronavirus_Finland.html</code> This file is the html version of the file below. | http://htmlpreview.github.io/?https://github.com/BerniHacker/Coronavirus/blob/master/Coronavirus_Finland.html
 <code>Coronavirus_Finland.ipynb</code> This file contains visualizations realated to the spread of Coronavirus in Finland. All the code used to dump, complete, prepare and visualize the data in included. | https://github.com/BerniHacker/Coronavirus/blob/master/Coronavirus_Finland.ipynb
-<code>Coronavirus_Finland.html</code> This file is the html version of the file above. | http://htmlpreview.github.io/?https://github.com/BerniHacker/Coronavirus/blob/master/Coronavirus_Finland.html
 <code>automat.sh</code> This is a shell script to automatize the data pipeline. | https://github.com/BerniHacker/Coronavirus/blob/master/automat.sh
+
+## How to install the data pipeline
+
+Download this repository "Coronavirus" into a dedicated directory in your environment.
+
+### Directory structure
+
+The following directory shall be created under the directory containing this notebook:
+
+- JHU_COVID-19
+
+### Initiate a Git repository for the source data and download the source repository
+
+$ git init
+$ git clone https://github.com/CSSEGISandData/COVID-19
+
+### Modifications to the shell script
+
+The file automat.sh shall be edited to change the path to your local directory
+
+### Required software:
+
+- Jupyter Notebook
+- Python
+- numpy
+- pandas
+- matplotlib
+- seaborn
+- regex
+
+## Running the pipeline
+
+In the Coronavirus directory:
+
+$ ./automat.sh
