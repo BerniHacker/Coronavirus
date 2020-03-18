@@ -1,6 +1,6 @@
 # Coronavirus Cases in Finland
 
-There are a lot of pages related to this topic in the Web but there was no free site that shows the daily cases in Finland with a delay of less that 24 hours.
+There are a lot of pages related to this topic in the Web but there was no free site that shows the daily cases in Finland with a reasonable delay.
 
 Also, it migth be beneficial to compare Finnish curves with curves from other Countries.
 
