@@ -1,8 +1,14 @@
 # Coronavirus Cases in Finland
 
-There are a lot of pages related to this topic in the Web but there was no free site that shows the daily cases in Finland with a reasonable delay.
+There are a few good dashboards in the Web about to this topic (for example, by Johns Hokpins University and by Tableau). In addition, there is a good site with latest information about Finland broken down by Region. Still, it might be beneficial to manipulate the data in order, for example, to compare Finnish curves with curves from other Countries.
 
-Also, it migth be beneficial to compare Finnish curves with curves from other Countries.
+Having updated charts is very useful both for authorities and for the population in order to make fact-based decisions that help to contain the positive cases so not to overload the hospitals and therefore minimizing the casualties.
+
+Comparing Finnish curves to those of neighboring Countries might provide useful insights since, in addition to the geographical proximity, those Countries have certain similarities in culture, behavior patterns and may be genetics.
+
+Also, comparison with the two Countries which have had the most critical situation so far (China and Italy) might be useful.
+
+_Currently those files are updated daily. Also, more plots will be added in the future._
 
 **If you are not interested in the code used to produce the plots, open the file in this [link](http://htmlpreview.github.io/?https://github.com/BerniHacker/Coronavirus/blob/master/Coronavirus_Finland.html), go to section 6. and focus on the plots and their description.**
 
