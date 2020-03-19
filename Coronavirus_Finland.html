@@ -13100,6 +13100,7 @@ div#notebook {
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><a href="#1.">1. Executive Summary</a><br>
+<font color='white'>....</font><a href="#1.1.">1.1. References</a><br>
 <a href="#2.">2. Setup</a><br>
 <a href="#3.">3. Defining the Needed Functions</a><br>
 <font color='white'>....</font><a href="#3.1.">3.1. Dataframes and lists handling</a><br>
@@ -13142,17 +13143,23 @@ div#notebook {
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>This notebook contains visualizations related to the spread of Coronavirus in Finland.</p>
-<p>The data is taken from the <a href="https://github.com/CSSEGISandData/COVID-19">Johns Hokpins University</a> (JHU) /1/.</p>
-<p>There are a lot of pages related to this topic in the Web but currently there is no free site that shows plots of the daily cases in Finland with a reasonable delay. Also, it might be beneficial to compare Finnish curves with curves from other Countries.</p>
-<p>Having updated charts is very useful both for authorities and population in order to make fact-based decisions that help to contain the cases and minimize the casualties. Comparing to what is happening / has happened to other Countries can help in decision making.</p>
+<p>The data is taken from the Johns Hokpins University (JHU) <a href="https://github.com/CSSEGISandData/COVID-19">/1/</a>.</p>
+<p>There are a few good dashboards in the Web about to this topic (for example, by Johns Hokpins University <a href="https://www.arcgis.com/apps/opsdashboard/index.html#/bda7594740fd40299423467b48e9ecf6">/2/</a> and by Tableau <a href="https://public.tableau.com/profile/covid.19.data.resource.hub#!/vizhome/COVID-19Cases_15840488375320/COVID-19Cases">/3/</a>). In addition, there is a good site with latest information about Finland broken down by Region <a href="https://finland-coronavirus-map.netlify.com/">/4/</a>. Still, it might be beneficial to manipulate the data in order, for example, to compare Finnish curves with curves from other Countries.</p>
+<p>Having updated charts is very useful both for authorities and for the population in order to make fact-based decisions that help to contain the positive cases so not to overload the hospitals and therefore minimizing the casualties.</p>
+<p>Comparing Finnish curves to those of neighboring Countries might provide useful insights since, in addition to the geographical proximity, those Countries have certain similarities in culture, behavior patterns and may be genetics.</p>
+<p>Also, comparison with the two Countries which have had the most critical situation so far (China and Italy) might be useful.</p>
 <p>A line plot containing confirmed cases each day as well as recovered cases and deceased cases in Finland has been produced.</p>
 <p>A second line plot containing the new confirmed daily cases in Finland, which shows the speed at which the virus is spreading, has been added.</p>
-<p>It might be useful to compare Finnish curves to those of neighboring Countries since in addition to the geographical proximity those Countries, have certain similarities in culture, behavior patterns and may be genetics.</p>
-<p>Finnish curves have been compared also to the curves of the two Countries which have had the most critical situation so far: China and Italy.</p>
-<p>Finally, a plot with worldwide data has been produced.</p>
-<p><sub>/1/<br>
-https://github.com/CSSEGISandData/COVID-19</sub></p>
+<p>Finnish curves have been compared to the curves of the Scandinavian Countries as well as China and Italy.</p>
+<p>Finally, plots with worldwide data have been produced.</p>
+<p>Due to the criticality of this information, no recommendations is included in this paper. Currently, Doctors and Authorities are the best sources for such recommendations.</p>
 <p><strong>If you are not interested in the code, go to section 6 and focus on the plots and their description.</strong></p>
+<p><strong>DISCLAIMER:</strong></p>
+<ul>
+<li>The code has not been peer-reviewed. If someone is wishing to do it, please contact the author.</li>
+<li>The data related to the last day might be incomplete.</li>
+<li>More clarifications are contained in section 6 close to the plots.</li>
+</ul>
 
 </div>
 </div>
@@ -13160,11 +13167,21 @@ https://github.com/CSSEGISandData/COVID-19</sub></p>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>DISCLAIMER:</strong></p>
-<ul>
-<li>The code has not been peer-reviewed. If someone is wishing to do it, please contact the author.</li>
-<li>The data related to the last day might be incomplete.</li>
-</ul>
+<h3 id="1.1.-References">1.1. References<a name="1.1." /><a class="anchor-link" href="#1.1.-References">&#182;</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><sub>/1/ [GitHub Repository by Johns Hokpins University](https://github.com/CSSEGISandData/COVID-19)<br>
+https://github.com/CSSEGISandData/COVID-19</sub></p>
+<p><sub>/2/ [Dashboard by Johns Hokpins University with world-wide view](https://www.arcgis.com/apps/opsdashboard/index.html#/bda7594740fd40299423467b48e9ecf6)<br>
+https://www.arcgis.com/apps/opsdashboard/index.html#/bda7594740fd40299423467b48e9ecf6</sub></p>
+<p><sub>/3/ <a href="https://public.tableau.com/profile/covid.19.data.resource.hub#!/vizhome/COVID-19Cases_15840488375320/COVID-19Cases">Dashboard by Tableau with both global and Country-specific data</a><br>
+<a href="https://public.tableau.com/profile/covid.19.data.resource.hub#!/vizhome/COVID-19Cases_15840488375320/COVID-19Cases">https://public.tableau.com/profile/covid.19.data.resource.hub#!/vizhome/COVID-19Cases_15840488375320/COVID-19Cases</a></p>
+<p><sub>/4/ <a href="https://finland-coronavirus-map.netlify.com/">Latest news about Finland broken by Region</a><br>
+<a href="https://finland-coronavirus-map.netlify.com/">https://finland-coronavirus-map.netlify.com/</a></p>
 
 </div>
 </div>
@@ -17566,6 +17583,7 @@ Deaths         0
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Many thanks to <a href="https://www.jhu.edu/">Johns Hokpins University</a> for sharing and maintaining daily the source csv files.</p>
+<p>Many thanks to colleagues and friends who have contributed by providing links and comments.</p>
 
 </div>
 </div>
