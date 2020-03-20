@@ -34,7 +34,7 @@ The following directory shall be created under the directory containing this not
 
 ### 2.2. Initiate a Git repository for the source data and download the source repository
 
-$ git init
+$ git init<br></br>
 $ git clone https://github.com/CSSEGISandData/COVID-19
 
 ### 2.3. Modifications to the shell script
