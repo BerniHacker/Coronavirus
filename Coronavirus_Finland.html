@@ -13112,9 +13112,9 @@ div#notebook {
 <font color='white'>....</font><a href="#5.2.">5.2. Preliminary Data Analysis</a><br>
 <font color='white'>....</font><a href="#5.3.">5.3. Data Cleansing</a><br>
 <font color='white'>....</font><a href="#5.4.">5.4. Data Preparation</a><br>
-<font color='white'>............</font><a href="#5.4.1.">5.4.1. New datasets with no NaN, no GPS coordinates / list of days</a><br>
+<font color='white'>............</font><a href="#5.4.1.">5.4.1. New datasets with no NaN, no GPS coordinates / list of days / list of Countries</a><br>
 <font color='white'>............</font><a href="#5.4.2.">5.4.2. Finnish Data</a><br>
-<font color='white'>............</font><a href="#5.4.3.">5.4.3. World data</a><br>
+<font color='white'>............</font><a href="#5.4.3.">5.4.3. World Data</a><br>
 <font color='white'>............</font><a href="#5.4.4.">5.4.4. Data from other Scandinavian Countries</a><br>
 <font color='white'>............</font><a href="#5.4.5.">5.4.5. Data from other European Countries</a><br>
 <font color='white'>............</font><a href="#5.4.6.">5.4.6. Data from China</a><br>
@@ -13460,36 +13460,37 @@ https://www.arcgis.com/apps/opsdashboard/index.html#/bda7594740fd40299423467b48e
 <div class="prompt input_prompt">In&nbsp;[6]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">extract_country</span><span class="p">(</span><span class="n">country</span><span class="p">,</span> <span class="n">days</span><span class="p">):</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">extract_country</span><span class="p">(</span><span class="n">Country</span><span class="p">,</span> <span class="n">days</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">    This function allows selecting data related to a specific Country</span>
 <span class="sd">    from the datasets produced by JHU.</span>
-<span class="sd">    It takes as an input a string containing the Country name and </span>
+<span class="sd">    It takes as an input a string containing the Country name written with</span>
+<span class="sd">    the first letter as a capital letter and </span>
 <span class="sd">    an integer containing how many days to skip.</span>
 <span class="sd">    It returns a tuple of 3 lists containing data related to confirmed,</span>
 <span class="sd">    recovered and deceased cases startinng from January 28th.</span>
 <span class="sd">    &#39;&#39;&#39;</span>
 
     <span class="c1"># Extracting confirmed cases</span>
-    <span class="n">confirm</span> <span class="o">=</span> <span class="n">world_confirmed</span><span class="p">[</span><span class="n">world_confirmed</span><span class="p">[</span><span class="s1">&#39;Country/Region&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">country</span><span class="p">]</span>
+    <span class="n">confirm</span> <span class="o">=</span> <span class="n">world_confirmed</span><span class="p">[</span><span class="n">world_confirmed</span><span class="p">[</span><span class="s1">&#39;Country/Region&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">Country</span><span class="p">]</span>
     <span class="c1"># Extracting the columns containing the data for each day</span>
-    <span class="c1"># starting from the first day of interest for Finland (January 28th)</span>
+    <span class="c1"># by skipping a number of days equal to days</span>
     <span class="n">confirm</span> <span class="o">=</span> <span class="n">confirm</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">4</span><span class="o">+</span><span class="n">days</span><span class="p">:]</span>
     <span class="c1"># Copying the result into a list</span>
     <span class="n">confirm_l</span> <span class="o">=</span> <span class="n">confirm</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">tolist</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
 
     <span class="c1"># Extracting recovered cases</span>
-    <span class="n">recov</span> <span class="o">=</span> <span class="n">world_recovered</span><span class="p">[</span><span class="n">world_recovered</span><span class="p">[</span><span class="s1">&#39;Country/Region&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">country</span><span class="p">]</span>
+    <span class="n">recov</span> <span class="o">=</span> <span class="n">world_recovered</span><span class="p">[</span><span class="n">world_recovered</span><span class="p">[</span><span class="s1">&#39;Country/Region&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">Country</span><span class="p">]</span>
     <span class="c1"># Extracting the columns containing the data for each day</span>
-    <span class="c1"># starting from the first day of interest for Finland (January 28th)</span>
+    <span class="c1"># by skipping a number of days equal to days</span>
     <span class="n">recov</span> <span class="o">=</span> <span class="n">recov</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">4</span><span class="o">+</span><span class="n">days</span><span class="p">:]</span>
     <span class="c1"># Copying the result into a list</span>
     <span class="n">recov_l</span> <span class="o">=</span> <span class="n">recov</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">tolist</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
 
     <span class="c1"># Extracting deceased cases</span>
-    <span class="n">deceas</span> <span class="o">=</span> <span class="n">world_deceased</span><span class="p">[</span><span class="n">world_deceased</span><span class="p">[</span><span class="s1">&#39;Country/Region&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">country</span><span class="p">]</span>
+    <span class="n">deceas</span> <span class="o">=</span> <span class="n">world_deceased</span><span class="p">[</span><span class="n">world_deceased</span><span class="p">[</span><span class="s1">&#39;Country/Region&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">Country</span><span class="p">]</span>
     <span class="c1"># Extracting the columns containing the data for each day</span>
-    <span class="c1"># starting from the first day of interest for Finland (January 28th)</span>
+    <span class="c1"># by skipping a number of days equal to days</span>
     <span class="n">deceas</span> <span class="o">=</span> <span class="n">deceas</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">4</span><span class="o">+</span><span class="n">days</span><span class="p">:]</span>
     <span class="c1"># Copying the result into a list</span>
     <span class="n">deceas_l</span> <span class="o">=</span> <span class="n">deceas</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">tolist</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
@@ -13505,6 +13506,79 @@ https://www.arcgis.com/apps/opsdashboard/index.html#/bda7594740fd40299423467b48e
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[7]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">prep_country_data</span><span class="p">(</span><span class="n">Country</span><span class="p">,</span> <span class="n">days</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    This function allows to prepare the data for a specific Country.</span>
+
+<span class="sd">    It takes the following inputs:</span>
+
+<span class="sd">    - a string variable that contains the name of the Country</span>
+<span class="sd">    written with the first letter as a capital letter</span>
+<span class="sd">    - an integer that tells the number of initial days in the time series</span>
+<span class="sd">    to skip</span>
+
+<span class="sd">    The function uses the following functions:</span>
+
+<span class="sd">    - &#39;extract_country&#39; to extract Country-specific information from</span>
+<span class="sd">    the relevant dataframes</span>
+<span class="sd">    - &#39;calc_increments&#39; to calculate the daily increments in a time series</span>
+<span class="sd">    - &#39;extract_non_null&#39; to extract only the non null values of a time series</span>
+
+<span class="sd">    The output is a tuple with the following content:</span>
+
+<span class="sd">    - a list containing a time series with the cumulative confirmed cases</span>
+<span class="sd">    - a list containing a time series with the cumulative recovered cases</span>
+<span class="sd">    - a list containing a time series with the cumulative deceased cases</span>
+<span class="sd">    - a list containing a time series with the daily increment</span>
+<span class="sd">    in the confirmed cases</span>
+<span class="sd">    - a list containing a time series with the cumulative confirmed cases</span>
+<span class="sd">    starting from the day of the first positive case</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+
+    <span class="c1"># Getting the name of thew Country in small letters</span>
+    <span class="n">country</span> <span class="o">=</span> <span class="n">Country</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+    
+    <span class="c1"># Creating descriptive file names</span>
+    <span class="n">countryname_hiddendays</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{}</span><span class="s2">_</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span> <span class="nb">format</span><span class="p">(</span><span class="n">country</span><span class="p">,</span> <span class="n">days</span><span class="p">)</span>
+    <span class="n">countryname_conf_hiddend</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{}</span><span class="s2">_conf_</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span> <span class="nb">format</span><span class="p">(</span><span class="n">country</span><span class="p">,</span> <span class="n">days</span><span class="p">)</span>
+    <span class="n">countryname_recov_hiddend</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{}</span><span class="s2">_recov_</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span> <span class="nb">format</span><span class="p">(</span><span class="n">country</span><span class="p">,</span> <span class="n">days</span><span class="p">)</span>
+    <span class="n">countryname_deceas_hiddend</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{}</span><span class="s2">_deceas_</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span> <span class="nb">format</span><span class="p">(</span><span class="n">country</span><span class="p">,</span> <span class="n">days</span><span class="p">)</span>
+    <span class="n">countryname_conf_incr_hiddend</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{}</span><span class="s2">_conf_incr_</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span> <span class="nb">format</span><span class="p">(</span><span class="n">country</span><span class="p">,</span> <span class="n">days</span><span class="p">)</span>
+    <span class="n">countryname_conf_pos</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{}</span><span class="s2">_conf_pos&quot;</span><span class="o">.</span> <span class="nb">format</span><span class="p">(</span><span class="n">country</span><span class="p">)</span>
+    
+    <span class="c1"># Extracting country-speficic data by using the function extract_country</span>
+    <span class="n">countryname_hiddendays</span> <span class="o">=</span> <span class="n">extract_country</span><span class="p">(</span><span class="n">Country</span><span class="p">,</span> <span class="n">days</span><span class="p">)</span>
+    <span class="c1"># Extracting the time series for the cumulative confirmed cases</span>
+    <span class="n">countryname_conf_hiddend</span> <span class="o">=</span> <span class="n">countryname_hiddendays</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="c1"># Extracting the time series for the cumulative decovered cases</span>
+    <span class="n">countryname_recov_hiddend</span> <span class="o">=</span> <span class="n">countryname_hiddendays</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="c1"># Extracting the time series for the cumulative deceased cases</span>
+    <span class="n">countryname_deceas_hiddend</span> <span class="o">=</span> <span class="n">countryname_hiddendays</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+    <span class="c1"># Extracting the time series for the daily increments in the confirmed cases</span>
+    <span class="n">countryname_conf_incr_hiddend</span> <span class="o">=</span> <span class="n">calc_increments</span><span class="p">(</span><span class="n">countryname_conf_hiddend</span><span class="p">)</span>
+    <span class="c1"># Extracting the complete time series about the cumulative confirmed cases</span>
+    <span class="n">complete_conf_series</span> <span class="o">=</span> <span class="n">extract_country</span><span class="p">(</span><span class="n">Country</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="c1"># Extracting the time series for the cumulative confirmed cases</span>
+    <span class="c1"># starting from the day of the first positive case</span>
+    <span class="n">countryname_conf_pos</span> <span class="o">=</span> <span class="n">extract_non_null</span><span class="p">(</span><span class="n">complete_conf_series</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+
+    <span class="k">return</span> <span class="n">countryname_conf_hiddend</span><span class="p">,</span> \
+           <span class="n">countryname_recov_hiddend</span><span class="p">,</span> \
+           <span class="n">countryname_deceas_hiddend</span><span class="p">,</span> \
+           <span class="n">countryname_conf_incr_hiddend</span><span class="p">,</span> \
+           <span class="n">countryname_conf_pos</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[8]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">extract_non_null</span><span class="p">(</span><span class="n">input_list</span><span class="p">):</span>
@@ -13551,7 +13625,7 @@ https://www.arcgis.com/apps/opsdashboard/index.html#/bda7594740fd40299423467b48e
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[8]:</div>
+<div class="prompt input_prompt">In&nbsp;[9]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Loading the data files into pandas dataframes</span>
@@ -13574,7 +13648,7 @@ https://www.arcgis.com/apps/opsdashboard/index.html#/bda7594740fd40299423467b48e
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[9]:</div>
+<div class="prompt input_prompt">In&nbsp;[10]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Uploading the latest daily report</span>
@@ -13640,7 +13714,7 @@ https://www.arcgis.com/apps/opsdashboard/index.html#/bda7594740fd40299423467b48e
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[10]:</div>
+<div class="prompt input_prompt">In&nbsp;[11]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Showing basic dataframe info</span>
@@ -13675,7 +13749,7 @@ and amount of null values for each column:
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[10]:</div>
+    <div class="prompt output_prompt">Out[11]:</div>
 
 
 
@@ -13768,150 +13842,6 @@ and amount of null values for each column:
       <th>3/20/20</th>
       <td>int64</td>
       <td>173</td>
-      <td>0</td>
-    </tr>
-  </tbody>
-</table>
-<p>63 rows × 3 columns</p>
-</div>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[11]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Showing basic dataframe info</span>
-<span class="n">df_basic_data</span><span class="p">(</span><span class="n">world_recovered</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>Dataframe name: world_recovered 
-
-Dataframe length: 477 
-
-Number of columns: 63 
-
-Dataframe&#39;s columns names, column data types, amount of distint (non null) values
-and amount of null values for each column:
-</pre>
-</div>
-</div>
-
-<div class="output_area">
-
-    <div class="prompt output_prompt">Out[11]:</div>
-
-
-
-<div class="output_html rendered_html output_subarea output_execute_result">
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>Data_Type</th>
-      <th>Amount_of_Distint_Values</th>
-      <th>Amount_of_Null_Values</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>Province/State</th>
-      <td>object</td>
-      <td>322</td>
-      <td>153</td>
-    </tr>
-    <tr>
-      <th>Country/Region</th>
-      <td>object</td>
-      <td>162</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>Lat</th>
-      <td>float64</td>
-      <td>468</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>Long</th>
-      <td>float64</td>
-      <td>453</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>1/22/20</th>
-      <td>int64</td>
-      <td>2</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-    </tr>
-    <tr>
-      <th>3/16/20</th>
-      <td>int64</td>
-      <td>55</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>3/17/20</th>
-      <td>int64</td>
-      <td>57</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>3/18/20</th>
-      <td>int64</td>
-      <td>61</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>3/19/20</th>
-      <td>int64</td>
-      <td>61</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>3/20/20</th>
-      <td>int64</td>
-      <td>64</td>
       <td>0</td>
     </tr>
   </tbody>
@@ -14076,6 +14006,150 @@ and amount of null values for each column:
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Showing basic dataframe info</span>
+<span class="n">df_basic_data</span><span class="p">(</span><span class="n">world_recovered</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Dataframe name: world_recovered 
+
+Dataframe length: 477 
+
+Number of columns: 63 
+
+Dataframe&#39;s columns names, column data types, amount of distint (non null) values
+and amount of null values for each column:
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[13]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Data_Type</th>
+      <th>Amount_of_Distint_Values</th>
+      <th>Amount_of_Null_Values</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Province/State</th>
+      <td>object</td>
+      <td>322</td>
+      <td>153</td>
+    </tr>
+    <tr>
+      <th>Country/Region</th>
+      <td>object</td>
+      <td>162</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>Lat</th>
+      <td>float64</td>
+      <td>468</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>Long</th>
+      <td>float64</td>
+      <td>453</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1/22/20</th>
+      <td>int64</td>
+      <td>2</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>3/16/20</th>
+      <td>int64</td>
+      <td>55</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>3/17/20</th>
+      <td>int64</td>
+      <td>57</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>3/18/20</th>
+      <td>int64</td>
+      <td>61</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>3/19/20</th>
+      <td>int64</td>
+      <td>61</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>3/20/20</th>
+      <td>int64</td>
+      <td>64</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+<p>63 rows × 3 columns</p>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[14]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Showing basic dataframe info</span>
 <span class="n">df_basic_data</span><span class="p">(</span><span class="n">daily_report</span><span class="p">)</span>
 </pre></div>
 
@@ -14107,7 +14181,7 @@ and amount of null values for each column:
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[13]:</div>
+    <div class="prompt output_prompt">Out[14]:</div>
 
 
 
@@ -14197,7 +14271,7 @@ and amount of null values for each column:
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[14]:</div>
+<div class="prompt input_prompt">In&nbsp;[15]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Checking how data looks like</span>
@@ -14214,7 +14288,7 @@ and amount of null values for each column:
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[14]:</div>
+    <div class="prompt output_prompt">Out[15]:</div>
 
 
 
@@ -14646,7 +14720,7 @@ and amount of null values for each column:
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[15]:</div>
+<div class="prompt input_prompt">In&nbsp;[16]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Checking how data looks like</span>
@@ -14663,7 +14737,7 @@ and amount of null values for each column:
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[15]:</div>
+    <div class="prompt output_prompt">Out[16]:</div>
 
 
 
@@ -15095,7 +15169,7 @@ and amount of null values for each column:
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[16]:</div>
+<div class="prompt input_prompt">In&nbsp;[17]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Checking how data looks like</span>
@@ -15112,7 +15186,7 @@ and amount of null values for each column:
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[16]:</div>
+    <div class="prompt output_prompt">Out[17]:</div>
 
 
 
@@ -15544,7 +15618,7 @@ and amount of null values for each column:
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[17]:</div>
+<div class="prompt input_prompt">In&nbsp;[18]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Checking how data looks like</span>
@@ -15561,7 +15635,7 @@ and amount of null values for each column:
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[17]:</div>
+    <div class="prompt output_prompt">Out[18]:</div>
 
 
 
@@ -15670,7 +15744,7 @@ and amount of null values for each column:
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[18]:</div>
+<div class="prompt input_prompt">In&nbsp;[19]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Converting null values in strings with value &quot;Not applicable&quot;</span>
@@ -15695,13 +15769,13 @@ and amount of null values for each column:
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="5.4.1.-New-datasets-with-no-NaN,-no-GPS-coordinates-/-list-of-days-">5.4.1. New datasets with no NaN, no GPS coordinates / list of days <a name="5.4.1." /><a class="anchor-link" href="#5.4.1.-New-datasets-with-no-NaN,-no-GPS-coordinates-/-list-of-days-">&#182;</a></h4>
+<h4 id="5.4.1.-New-datasets-with-no-NaN,-no-GPS-coordinates-/-list-of-days-/-list-of-Countries-">5.4.1. New datasets with no NaN, no GPS coordinates / list of days / list of Countries <a name="5.4.1." /><a class="anchor-link" href="#5.4.1.-New-datasets-with-no-NaN,-no-GPS-coordinates-/-list-of-days-/-list-of-Countries-">&#182;</a></h4>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[19]:</div>
+<div class="prompt input_prompt">In&nbsp;[20]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Dropping the GPS coordinates and storing the result in new datasets</span>
@@ -15727,7 +15801,7 @@ and amount of null values for each column:
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[20]:</div>
+<div class="prompt input_prompt">In&nbsp;[21]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Creating a list of dates</span>
@@ -15759,7 +15833,7 @@ and amount of null values for each column:
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[20]:</div>
+    <div class="prompt output_prompt">Out[21]:</div>
 
 
 
@@ -15834,10 +15908,10 @@ and amount of null values for each column:
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[21]:</div>
+<div class="prompt input_prompt">In&nbsp;[22]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># listing the Countries</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Listing the Countries</span>
 <span class="n">world_conf_group</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">to_list</span><span class="p">()</span>
 </pre></div>
 
@@ -15851,7 +15925,7 @@ and amount of null values for each column:
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[21]:</div>
+    <div class="prompt output_prompt">Out[22]:</div>
 
 
 
@@ -16036,7 +16110,7 @@ and amount of null values for each column:
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[22]:</div>
+<div class="prompt input_prompt">In&nbsp;[23]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Calling the function extract_country to extract data related to Finland</span>
@@ -16061,7 +16135,7 @@ and amount of null values for each column:
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[23]:</div>
+<div class="prompt input_prompt">In&nbsp;[24]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;first day:&quot;</span><span class="p">,</span> <span class="n">days_fin</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
@@ -16094,7 +16168,7 @@ number of days: 53
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[24]:</div>
+<div class="prompt input_prompt">In&nbsp;[25]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Visualizing the complete series</span>
@@ -16111,7 +16185,7 @@ number of days: 53
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[24]:</div>
+    <div class="prompt output_prompt">Out[25]:</div>
 
 
 
@@ -16180,7 +16254,7 @@ number of days: 53
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[25]:</div>
+<div class="prompt input_prompt">In&nbsp;[26]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Visualizing the complete series</span>
@@ -16197,7 +16271,7 @@ number of days: 53
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[25]:</div>
+    <div class="prompt output_prompt">Out[26]:</div>
 
 
 
@@ -16266,7 +16340,7 @@ number of days: 53
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[26]:</div>
+<div class="prompt input_prompt">In&nbsp;[27]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Visualizing the complete series</span>
@@ -16283,7 +16357,7 @@ number of days: 53
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[26]:</div>
+    <div class="prompt output_prompt">Out[27]:</div>
 
 
 
@@ -16352,7 +16426,7 @@ number of days: 53
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[27]:</div>
+<div class="prompt input_prompt">In&nbsp;[28]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Creating a list of same lenght as days_fin containing the increment of</span>
@@ -16374,7 +16448,7 @@ number of days: 53
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[27]:</div>
+    <div class="prompt output_prompt">Out[28]:</div>
 
 
 
@@ -16443,7 +16517,7 @@ number of days: 53
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[28]:</div>
+<div class="prompt input_prompt">In&nbsp;[29]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Extracting all data about Finland (from the first available day)</span>
@@ -16474,13 +16548,13 @@ number of days: 53
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="5.4.3.-World-data-">5.4.3. World data <a name="5.4.3." /><a class="anchor-link" href="#5.4.3.-World-data-">&#182;</a></h4>
+<h4 id="5.4.3.-World-Data-">5.4.3. World Data <a name="5.4.3." /><a class="anchor-link" href="#5.4.3.-World-Data-">&#182;</a></h4>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[29]:</div>
+<div class="prompt input_prompt">In&nbsp;[30]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Selecting only the columns with the daily data</span>
@@ -16496,7 +16570,7 @@ number of days: 53
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[30]:</div>
+<div class="prompt input_prompt">In&nbsp;[31]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Calculating cumulative worldwide data for each day</span>
@@ -16519,65 +16593,57 @@ number of days: 53
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[31]:</div>
+<div class="prompt input_prompt">In&nbsp;[32]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Calling the function extract_country to extract data related</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Calling the function prep_country_data to extract data related</span>
 <span class="c1"># to the other Scandinavian Countries</span>
 
-<span class="c1"># (skipping the first 6 days)</span>
+<span class="c1"># 1. Skipping the first 6 days of the time series</span>
 
 <span class="c1"># Denmark</span>
-<span class="n">Denmark_6</span> <span class="o">=</span> <span class="n">extract_country</span><span class="p">(</span><span class="s2">&quot;Denmark&quot;</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
-<span class="n">denmark_conf_6</span> <span class="o">=</span> <span class="n">Denmark_6</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-<span class="n">denmark_recov_6</span> <span class="o">=</span> <span class="n">Denmark_6</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
-<span class="n">denmark_deceas_6</span> <span class="o">=</span> <span class="n">Denmark_6</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+<span class="n">denmark_6</span> <span class="o">=</span> <span class="n">prep_country_data</span><span class="p">(</span><span class="s2">&quot;Denmark&quot;</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
+<span class="n">denmark_conf_6</span> <span class="o">=</span> <span class="n">denmark_6</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">denmark_recov_6</span> <span class="o">=</span> <span class="n">denmark_6</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">denmark_deceas_6</span> <span class="o">=</span> <span class="n">denmark_6</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+<span class="n">denmark_conf_incr_6</span> <span class="o">=</span> <span class="n">denmark_6</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
 
 <span class="c1"># Norway</span>
-<span class="n">Norway_6</span> <span class="o">=</span> <span class="n">extract_country</span><span class="p">(</span><span class="s2">&quot;Norway&quot;</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
-<span class="n">norway_conf_6</span> <span class="o">=</span> <span class="n">Norway_6</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-<span class="n">norway_recov_6</span> <span class="o">=</span> <span class="n">Norway_6</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
-<span class="n">norway_deceas_6</span> <span class="o">=</span> <span class="n">Norway_6</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+<span class="n">norway_6</span> <span class="o">=</span> <span class="n">prep_country_data</span><span class="p">(</span><span class="s2">&quot;Norway&quot;</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
+<span class="n">norway_conf_6</span> <span class="o">=</span> <span class="n">norway_6</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">norway_recov_6</span> <span class="o">=</span> <span class="n">norway_6</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">norway_deceas_6</span> <span class="o">=</span> <span class="n">norway_6</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+<span class="n">norway_conf_incr_6</span> <span class="o">=</span> <span class="n">norway_6</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
 
 <span class="c1"># Sweden</span>
-<span class="n">Sweden_6</span> <span class="o">=</span> <span class="n">extract_country</span><span class="p">(</span><span class="s2">&quot;Sweden&quot;</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
-<span class="n">sweden_conf_6</span> <span class="o">=</span> <span class="n">Sweden_6</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-<span class="n">sweden_recov_6</span> <span class="o">=</span> <span class="n">Sweden_6</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
-<span class="n">sweden_deceas_6</span> <span class="o">=</span> <span class="n">Sweden_6</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+<span class="n">sweden_6</span> <span class="o">=</span> <span class="n">prep_country_data</span><span class="p">(</span><span class="s2">&quot;Sweden&quot;</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
+<span class="n">sweden_conf_6</span> <span class="o">=</span> <span class="n">sweden_6</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">sweden_recov_6</span> <span class="o">=</span> <span class="n">sweden_6</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">sweden_deceas_6</span> <span class="o">=</span> <span class="n">sweden_6</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+<span class="n">sweden_conf_incr_6</span> <span class="o">=</span> <span class="n">sweden_6</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
 
-<span class="c1"># (complete data series)</span>
+<span class="c1"># 2. complete time series</span>
 
 <span class="c1"># Denmark</span>
-<span class="n">Denmark_0</span> <span class="o">=</span> <span class="n">extract_country</span><span class="p">(</span><span class="s2">&quot;Denmark&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
-<span class="n">denmark_conf_0</span> <span class="o">=</span> <span class="n">Denmark_0</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-<span class="n">denmark_recov_0</span> <span class="o">=</span> <span class="n">Denmark_0</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
-<span class="n">denmark_deceas_0</span> <span class="o">=</span> <span class="n">Denmark_0</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+<span class="n">denmark_0</span> <span class="o">=</span> <span class="n">prep_country_data</span><span class="p">(</span><span class="s2">&quot;Denmark&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">denmark_conf_0</span> <span class="o">=</span> <span class="n">denmark_0</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">denmark_recov_0</span> <span class="o">=</span> <span class="n">denmark_0</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">denmark_deceas_0</span> <span class="o">=</span> <span class="n">denmark_0</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+<span class="n">denmark_conf_pos</span> <span class="o">=</span> <span class="n">denmark_0</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span>
 
 <span class="c1"># Norway</span>
-<span class="n">Norway_0</span> <span class="o">=</span> <span class="n">extract_country</span><span class="p">(</span><span class="s2">&quot;Norway&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
-<span class="n">norway_conf_0</span> <span class="o">=</span> <span class="n">Norway_0</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-<span class="n">norway_recov_0</span> <span class="o">=</span> <span class="n">Norway_0</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
-<span class="n">norway_deceas_0</span> <span class="o">=</span> <span class="n">Norway_0</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+<span class="n">norway_0</span> <span class="o">=</span> <span class="n">prep_country_data</span><span class="p">(</span><span class="s2">&quot;Norway&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">norway_conf_0</span> <span class="o">=</span> <span class="n">norway_0</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">norway_recov_0</span> <span class="o">=</span> <span class="n">norway_0</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">norway_deceas_0</span> <span class="o">=</span> <span class="n">norway_0</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+<span class="n">norway_conf_pos</span> <span class="o">=</span> <span class="n">norway_0</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span>
 
 <span class="c1"># Sweden</span>
-<span class="n">Sweden_0</span> <span class="o">=</span> <span class="n">extract_country</span><span class="p">(</span><span class="s2">&quot;Sweden&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
-<span class="n">sweden_conf_0</span> <span class="o">=</span> <span class="n">Sweden_0</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-<span class="n">sweden_recov_0</span> <span class="o">=</span> <span class="n">Sweden_0</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
-<span class="n">sweden_deceas_0</span> <span class="o">=</span> <span class="n">Sweden_0</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
-
-<span class="c1"># Calculating the incremental values of the confirmed cases</span>
-<span class="n">denmark_conf_incr_6</span> <span class="o">=</span> <span class="n">calc_increments</span><span class="p">(</span><span class="n">denmark_conf_6</span><span class="p">)</span>
-<span class="n">norway_conf_incr_6</span> <span class="o">=</span> <span class="n">calc_increments</span><span class="p">(</span><span class="n">norway_conf_6</span><span class="p">)</span>
-<span class="n">sweden_conf_incr_6</span> <span class="o">=</span> <span class="n">calc_increments</span><span class="p">(</span><span class="n">sweden_conf_6</span><span class="p">)</span>
-
-<span class="c1"># Extracting the dataseries from the first confirmed case in the Country</span>
-<span class="c1"># by using the function extract_non_null</span>
-<span class="c1"># (the function extracts all non null values, not only the leading zeros</span>
-<span class="c1"># but this is OK since the total confirmed cases cannot decrease)</span>
-
-<span class="n">denmark_conf_pos</span> <span class="o">=</span> <span class="n">extract_non_null</span><span class="p">(</span><span class="n">denmark_conf_0</span><span class="p">)</span>
-<span class="n">norway_conf_pos</span> <span class="o">=</span> <span class="n">extract_non_null</span><span class="p">(</span><span class="n">norway_conf_0</span><span class="p">)</span>
-<span class="n">sweden_conf_pos</span> <span class="o">=</span> <span class="n">extract_non_null</span><span class="p">(</span><span class="n">sweden_conf_0</span><span class="p">)</span>
+<span class="n">sweden_0</span> <span class="o">=</span> <span class="n">prep_country_data</span><span class="p">(</span><span class="s2">&quot;Sweden&quot;</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
+<span class="n">sweden_conf_0</span> <span class="o">=</span> <span class="n">sweden_0</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">sweden_recov_0</span> <span class="o">=</span> <span class="n">sweden_0</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">sweden_deceas_0</span> <span class="o">=</span> <span class="n">sweden_0</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+<span class="n">sweden_conf_pos</span> <span class="o">=</span> <span class="n">sweden_0</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span>
 </pre></div>
 
     </div>
@@ -16594,35 +16660,16 @@ number of days: 53
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[32]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Calling the function extract_country to extract data related to Italy</span>
-<span class="n">Italy_0</span> <span class="o">=</span> <span class="n">extract_country</span><span class="p">(</span><span class="s2">&quot;Italy&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
-<span class="n">italy_conf_0</span> <span class="o">=</span> <span class="n">Italy_0</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-<span class="n">italy_recov_0</span> <span class="o">=</span> <span class="n">Italy_0</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
-<span class="n">italy_deceas_0</span> <span class="o">=</span> <span class="n">Italy_0</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
-<span class="n">italy_conf_incr_0</span> <span class="o">=</span> <span class="n">calc_increments</span><span class="p">(</span><span class="n">italy_conf_0</span><span class="p">)</span>
-<span class="n">italy_conf_pos</span> <span class="o">=</span> <span class="n">extract_non_null</span><span class="p">(</span><span class="n">italy_conf_0</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
 <div class="prompt input_prompt">In&nbsp;[33]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Calling the function extract_country to extract data related to Spain</span>
-<span class="n">Spain_0</span> <span class="o">=</span> <span class="n">extract_country</span><span class="p">(</span><span class="s2">&quot;Spain&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
-<span class="n">spain_conf_0</span> <span class="o">=</span> <span class="n">Spain_0</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-<span class="n">spain_recov_0</span> <span class="o">=</span> <span class="n">Spain_0</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
-<span class="n">spain_deceas_0</span> <span class="o">=</span> <span class="n">Spain_0</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
-<span class="n">spain_conf_incr_0</span> <span class="o">=</span> <span class="n">calc_increments</span><span class="p">(</span><span class="n">spain_conf_0</span><span class="p">)</span>
-<span class="n">spain_conf_pos</span> <span class="o">=</span> <span class="n">extract_non_null</span><span class="p">(</span><span class="n">spain_conf_0</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Calling the function prep_country_data to extract data related to Italy</span>
+<span class="n">italy_0</span> <span class="o">=</span> <span class="n">prep_country_data</span><span class="p">(</span><span class="s2">&quot;Italy&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">italy_conf_0</span> <span class="o">=</span> <span class="n">italy_0</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">italy_recov_0</span> <span class="o">=</span> <span class="n">italy_0</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">italy_deceas_0</span> <span class="o">=</span> <span class="n">italy_0</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+<span class="n">italy_conf_incr_0</span> <span class="o">=</span> <span class="n">italy_0</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
+<span class="n">italy_conf_pos</span> <span class="o">=</span> <span class="n">italy_0</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span>
 </pre></div>
 
     </div>
@@ -16635,13 +16682,13 @@ number of days: 53
 <div class="prompt input_prompt">In&nbsp;[34]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Calling the function extract_country to extract data related to Germany</span>
-<span class="n">Germany_0</span> <span class="o">=</span> <span class="n">extract_country</span><span class="p">(</span><span class="s2">&quot;Germany&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
-<span class="n">germany_conf_0</span> <span class="o">=</span> <span class="n">Germany_0</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-<span class="n">germany_recov_0</span> <span class="o">=</span> <span class="n">Germany_0</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
-<span class="n">germany_deceas_0</span> <span class="o">=</span> <span class="n">Germany_0</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
-<span class="n">germany_conf_incr_0</span> <span class="o">=</span> <span class="n">calc_increments</span><span class="p">(</span><span class="n">germany_conf_0</span><span class="p">)</span>
-<span class="n">germany_conf_pos</span> <span class="o">=</span> <span class="n">extract_non_null</span><span class="p">(</span><span class="n">germany_conf_0</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Calling the function extract_country to extract data related to Spain</span>
+<span class="n">spain_0</span> <span class="o">=</span> <span class="n">prep_country_data</span><span class="p">(</span><span class="s2">&quot;Spain&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">spain_conf_0</span> <span class="o">=</span> <span class="n">spain_0</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">spain_recov_0</span> <span class="o">=</span> <span class="n">spain_0</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">spain_deceas_0</span> <span class="o">=</span> <span class="n">spain_0</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+<span class="n">spain_conf_incr_0</span> <span class="o">=</span> <span class="n">spain_0</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
+<span class="n">spain_conf_pos</span> <span class="o">=</span> <span class="n">spain_0</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span>
 </pre></div>
 
     </div>
@@ -16654,13 +16701,13 @@ number of days: 53
 <div class="prompt input_prompt">In&nbsp;[35]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Calling the function extract_country to extract data related to France</span>
-<span class="n">France_0</span> <span class="o">=</span> <span class="n">extract_country</span><span class="p">(</span><span class="s2">&quot;France&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
-<span class="n">france_conf_0</span> <span class="o">=</span> <span class="n">France_0</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-<span class="n">france_recov_0</span> <span class="o">=</span> <span class="n">France_0</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
-<span class="n">france_deceas_0</span> <span class="o">=</span> <span class="n">France_0</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
-<span class="n">france_conf_incr_0</span> <span class="o">=</span> <span class="n">calc_increments</span><span class="p">(</span><span class="n">france_conf_0</span><span class="p">)</span>
-<span class="n">france_conf_pos</span> <span class="o">=</span> <span class="n">extract_non_null</span><span class="p">(</span><span class="n">france_conf_0</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Calling the function extract_country to extract data related to Germany</span>
+<span class="n">germany_0</span> <span class="o">=</span> <span class="n">prep_country_data</span><span class="p">(</span><span class="s2">&quot;Germany&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">germany_conf_0</span> <span class="o">=</span> <span class="n">germany_0</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">germany_recov_0</span> <span class="o">=</span> <span class="n">germany_0</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">germany_deceas_0</span> <span class="o">=</span> <span class="n">germany_0</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+<span class="n">germany_conf_incr_0</span> <span class="o">=</span> <span class="n">germany_0</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
+<span class="n">germany_conf_pos</span> <span class="o">=</span> <span class="n">germany_0</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span>
 </pre></div>
 
     </div>
@@ -16673,13 +16720,13 @@ number of days: 53
 <div class="prompt input_prompt">In&nbsp;[36]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Calling the function extract_country to extract data related to Switzerland</span>
-<span class="n">Switzerland_0</span> <span class="o">=</span> <span class="n">extract_country</span><span class="p">(</span><span class="s2">&quot;Switzerland&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
-<span class="n">switzerland_conf_0</span> <span class="o">=</span> <span class="n">Switzerland_0</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-<span class="n">switzerland_recov_0</span> <span class="o">=</span> <span class="n">Switzerland_0</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
-<span class="n">switzerland_deceas_0</span> <span class="o">=</span> <span class="n">Switzerland_0</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
-<span class="n">switzerland_conf_incr_0</span> <span class="o">=</span> <span class="n">calc_increments</span><span class="p">(</span><span class="n">switzerland_conf_0</span><span class="p">)</span>
-<span class="n">switzerland_conf_pos</span> <span class="o">=</span> <span class="n">extract_non_null</span><span class="p">(</span><span class="n">switzerland_conf_0</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Calling the function extract_country to extract data related to France</span>
+<span class="n">france_0</span> <span class="o">=</span> <span class="n">prep_country_data</span><span class="p">(</span><span class="s2">&quot;France&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">france_conf_0</span> <span class="o">=</span> <span class="n">france_0</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">france_recov_0</span> <span class="o">=</span> <span class="n">france_0</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">france_deceas_0</span> <span class="o">=</span> <span class="n">france_0</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+<span class="n">france_conf_incr_0</span> <span class="o">=</span> <span class="n">france_0</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
+<span class="n">france_conf_pos</span> <span class="o">=</span> <span class="n">france_0</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span>
 </pre></div>
 
     </div>
@@ -16692,13 +16739,13 @@ number of days: 53
 <div class="prompt input_prompt">In&nbsp;[37]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Calling the function extract_country to extract data related to Netherlands</span>
-<span class="n">Netherlands_0</span> <span class="o">=</span> <span class="n">extract_country</span><span class="p">(</span><span class="s2">&quot;Netherlands&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
-<span class="n">netherlands_conf_0</span> <span class="o">=</span> <span class="n">Netherlands_0</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-<span class="n">netherlands_recov_0</span> <span class="o">=</span> <span class="n">Netherlands_0</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
-<span class="n">netherlands_deceas_0</span> <span class="o">=</span> <span class="n">Netherlands_0</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
-<span class="n">netherlands_conf_incr_0</span> <span class="o">=</span> <span class="n">calc_increments</span><span class="p">(</span><span class="n">netherlands_conf_0</span><span class="p">)</span>
-<span class="n">netherlands_conf_pos</span> <span class="o">=</span> <span class="n">extract_non_null</span><span class="p">(</span><span class="n">netherlands_conf_0</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Calling the function extract_country to extract data related to Switzerland</span>
+<span class="n">switzerland_0</span> <span class="o">=</span> <span class="n">prep_country_data</span><span class="p">(</span><span class="s2">&quot;Switzerland&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">switzerland_conf_0</span> <span class="o">=</span> <span class="n">switzerland_0</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">switzerland_recov_0</span> <span class="o">=</span> <span class="n">switzerland_0</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">switzerland_deceas_0</span> <span class="o">=</span> <span class="n">switzerland_0</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+<span class="n">switzerland_conf_incr_0</span> <span class="o">=</span> <span class="n">switzerland_0</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
+<span class="n">switzerland_conf_pos</span> <span class="o">=</span> <span class="n">switzerland_0</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span>
 </pre></div>
 
     </div>
@@ -16711,13 +16758,13 @@ number of days: 53
 <div class="prompt input_prompt">In&nbsp;[38]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Calling the function extract_country to extract data related to Austria</span>
-<span class="n">Austria_0</span> <span class="o">=</span> <span class="n">extract_country</span><span class="p">(</span><span class="s2">&quot;Austria&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
-<span class="n">austria_conf_0</span> <span class="o">=</span> <span class="n">Austria_0</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-<span class="n">austria_recov_0</span> <span class="o">=</span> <span class="n">Austria_0</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
-<span class="n">austria_deceas_0</span> <span class="o">=</span> <span class="n">Austria_0</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
-<span class="n">austria_conf_incr_0</span> <span class="o">=</span> <span class="n">calc_increments</span><span class="p">(</span><span class="n">austria_conf_0</span><span class="p">)</span>
-<span class="n">austria_conf_pos</span> <span class="o">=</span> <span class="n">extract_non_null</span><span class="p">(</span><span class="n">austria_conf_0</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Calling the function extract_country to extract data related to Netherlands</span>
+<span class="n">netherlands_0</span> <span class="o">=</span> <span class="n">prep_country_data</span><span class="p">(</span><span class="s2">&quot;Netherlands&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">netherlands_conf_0</span> <span class="o">=</span> <span class="n">netherlands_0</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">netherlands_recov_0</span> <span class="o">=</span> <span class="n">netherlands_0</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">netherlands_deceas_0</span> <span class="o">=</span> <span class="n">netherlands_0</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+<span class="n">netherlands_conf_incr_0</span> <span class="o">=</span> <span class="n">netherlands_0</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
+<span class="n">netherlands_conf_pos</span> <span class="o">=</span> <span class="n">netherlands_0</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span>
 </pre></div>
 
     </div>
@@ -16730,13 +16777,32 @@ number of days: 53
 <div class="prompt input_prompt">In&nbsp;[39]:</div>
 <div class="inner_cell">
     <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Calling the function extract_country to extract data related to Austria</span>
+<span class="n">austria_0</span> <span class="o">=</span> <span class="n">prep_country_data</span><span class="p">(</span><span class="s2">&quot;Austria&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">austria_conf_0</span> <span class="o">=</span> <span class="n">austria_0</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">austria_recov_0</span> <span class="o">=</span> <span class="n">austria_0</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">austria_deceas_0</span> <span class="o">=</span> <span class="n">austria_0</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+<span class="n">austria_conf_incr_0</span> <span class="o">=</span> <span class="n">austria_0</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
+<span class="n">austria_conf_pos</span> <span class="o">=</span> <span class="n">austria_0</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[40]:</div>
+<div class="inner_cell">
+    <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Calling the function extract_country to extract data related to Belgium</span>
-<span class="n">Belgium_0</span> <span class="o">=</span> <span class="n">extract_country</span><span class="p">(</span><span class="s2">&quot;Belgium&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
-<span class="n">belgium_conf_0</span> <span class="o">=</span> <span class="n">Belgium_0</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-<span class="n">belgium_recov_0</span> <span class="o">=</span> <span class="n">Belgium_0</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
-<span class="n">belgium_deceas_0</span> <span class="o">=</span> <span class="n">Belgium_0</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
-<span class="n">belgium_conf_incr_0</span> <span class="o">=</span> <span class="n">calc_increments</span><span class="p">(</span><span class="n">belgium_conf_0</span><span class="p">)</span>
-<span class="n">belgium_conf_pos</span> <span class="o">=</span> <span class="n">extract_non_null</span><span class="p">(</span><span class="n">belgium_conf_0</span><span class="p">)</span>
+<span class="n">belgium_0</span> <span class="o">=</span> <span class="n">prep_country_data</span><span class="p">(</span><span class="s2">&quot;Belgium&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">belgium_conf_0</span> <span class="o">=</span> <span class="n">belgium_0</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">belgium_recov_0</span> <span class="o">=</span> <span class="n">belgium_0</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">belgium_deceas_0</span> <span class="o">=</span> <span class="n">belgium_0</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+<span class="n">belgium_conf_incr_0</span> <span class="o">=</span> <span class="n">belgium_0</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
+<span class="n">belgium_conf_pos</span> <span class="o">=</span> <span class="n">belgium_0</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span>
 </pre></div>
 
     </div>
@@ -16753,16 +16819,411 @@ number of days: 53
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[40]:</div>
+<div class="prompt input_prompt">In&nbsp;[41]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Calling the function extract_country to extract data related to China</span>
-<span class="n">China_0</span> <span class="o">=</span> <span class="n">extract_country</span><span class="p">(</span><span class="s2">&quot;China&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
-<span class="n">china_conf_0</span> <span class="o">=</span> <span class="n">China_0</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-<span class="n">china_recov_0</span><span class="o">=</span> <span class="n">China_0</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
-<span class="n">china_deceas_0</span> <span class="o">=</span> <span class="n">China_0</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
-<span class="n">china_conf_incr_0</span> <span class="o">=</span> <span class="n">calc_increments</span><span class="p">(</span><span class="n">china_conf_0</span><span class="p">)</span>
-<span class="n">china_conf_pos</span> <span class="o">=</span> <span class="n">extract_non_null</span><span class="p">(</span><span class="n">china_conf_0</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Daily Report from China broken by Provinces</span>
+<span class="n">daily_rep_short</span><span class="p">[</span><span class="n">daily_rep_short</span><span class="p">[</span><span class="s1">&#39;Country/Region&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;China&quot;</span><span class="p">]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[41]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Province/State</th>
+      <th>Country/Region</th>
+      <th>Confirmed</th>
+      <th>Deaths</th>
+      <th>Recovered</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Hubei</td>
+      <td>China</td>
+      <td>67800</td>
+      <td>3133</td>
+      <td>58382</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>Guangdong</td>
+      <td>China</td>
+      <td>1395</td>
+      <td>8</td>
+      <td>1323</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>Henan</td>
+      <td>China</td>
+      <td>1273</td>
+      <td>22</td>
+      <td>1250</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>Zhejiang</td>
+      <td>China</td>
+      <td>1234</td>
+      <td>1</td>
+      <td>1219</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>Hunan</td>
+      <td>China</td>
+      <td>1018</td>
+      <td>4</td>
+      <td>1014</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>Anhui</td>
+      <td>China</td>
+      <td>990</td>
+      <td>6</td>
+      <td>984</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>Jiangxi</td>
+      <td>China</td>
+      <td>935</td>
+      <td>1</td>
+      <td>934</td>
+    </tr>
+    <tr>
+      <th>30</th>
+      <td>Shandong</td>
+      <td>China</td>
+      <td>762</td>
+      <td>7</td>
+      <td>748</td>
+    </tr>
+    <tr>
+      <th>34</th>
+      <td>Jiangsu</td>
+      <td>China</td>
+      <td>631</td>
+      <td>0</td>
+      <td>631</td>
+    </tr>
+    <tr>
+      <th>36</th>
+      <td>Chongqing</td>
+      <td>China</td>
+      <td>576</td>
+      <td>6</td>
+      <td>570</td>
+    </tr>
+    <tr>
+      <th>39</th>
+      <td>Sichuan</td>
+      <td>China</td>
+      <td>541</td>
+      <td>3</td>
+      <td>536</td>
+    </tr>
+    <tr>
+      <th>43</th>
+      <td>Beijing</td>
+      <td>China</td>
+      <td>491</td>
+      <td>8</td>
+      <td>390</td>
+    </tr>
+    <tr>
+      <th>44</th>
+      <td>Heilongjiang</td>
+      <td>China</td>
+      <td>484</td>
+      <td>13</td>
+      <td>463</td>
+    </tr>
+    <tr>
+      <th>55</th>
+      <td>Shanghai</td>
+      <td>China</td>
+      <td>371</td>
+      <td>3</td>
+      <td>326</td>
+    </tr>
+    <tr>
+      <th>64</th>
+      <td>Hebei</td>
+      <td>China</td>
+      <td>318</td>
+      <td>6</td>
+      <td>310</td>
+    </tr>
+    <tr>
+      <th>68</th>
+      <td>Fujian</td>
+      <td>China</td>
+      <td>299</td>
+      <td>1</td>
+      <td>295</td>
+    </tr>
+    <tr>
+      <th>73</th>
+      <td>Hong Kong</td>
+      <td>China</td>
+      <td>256</td>
+      <td>4</td>
+      <td>98</td>
+    </tr>
+    <tr>
+      <th>74</th>
+      <td>Guangxi</td>
+      <td>China</td>
+      <td>254</td>
+      <td>2</td>
+      <td>250</td>
+    </tr>
+    <tr>
+      <th>76</th>
+      <td>Shaanxi</td>
+      <td>China</td>
+      <td>247</td>
+      <td>3</td>
+      <td>237</td>
+    </tr>
+    <tr>
+      <th>86</th>
+      <td>Yunnan</td>
+      <td>China</td>
+      <td>176</td>
+      <td>2</td>
+      <td>172</td>
+    </tr>
+    <tr>
+      <th>89</th>
+      <td>Hainan</td>
+      <td>China</td>
+      <td>168</td>
+      <td>6</td>
+      <td>161</td>
+    </tr>
+    <tr>
+      <th>95</th>
+      <td>Guizhou</td>
+      <td>China</td>
+      <td>146</td>
+      <td>2</td>
+      <td>144</td>
+    </tr>
+    <tr>
+      <th>99</th>
+      <td>Tianjin</td>
+      <td>China</td>
+      <td>137</td>
+      <td>3</td>
+      <td>133</td>
+    </tr>
+    <tr>
+      <th>105</th>
+      <td>Gansu</td>
+      <td>China</td>
+      <td>134</td>
+      <td>2</td>
+      <td>98</td>
+    </tr>
+    <tr>
+      <th>106</th>
+      <td>Shanxi</td>
+      <td>China</td>
+      <td>133</td>
+      <td>0</td>
+      <td>133</td>
+    </tr>
+    <tr>
+      <th>111</th>
+      <td>Liaoning</td>
+      <td>China</td>
+      <td>126</td>
+      <td>2</td>
+      <td>122</td>
+    </tr>
+    <tr>
+      <th>121</th>
+      <td>Jilin</td>
+      <td>China</td>
+      <td>93</td>
+      <td>1</td>
+      <td>92</td>
+    </tr>
+    <tr>
+      <th>136</th>
+      <td>Xinjiang</td>
+      <td>China</td>
+      <td>76</td>
+      <td>3</td>
+      <td>73</td>
+    </tr>
+    <tr>
+      <th>138</th>
+      <td>Inner Mongolia</td>
+      <td>China</td>
+      <td>75</td>
+      <td>1</td>
+      <td>74</td>
+    </tr>
+    <tr>
+      <th>139</th>
+      <td>Ningxia</td>
+      <td>China</td>
+      <td>75</td>
+      <td>0</td>
+      <td>75</td>
+    </tr>
+    <tr>
+      <th>191</th>
+      <td>Qinghai</td>
+      <td>China</td>
+      <td>18</td>
+      <td>0</td>
+      <td>18</td>
+    </tr>
+    <tr>
+      <th>194</th>
+      <td>Macau</td>
+      <td>China</td>
+      <td>17</td>
+      <td>0</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <th>267</th>
+      <td>Tibet</td>
+      <td>China</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[42]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Number of entries related to China:&quot;</span><span class="p">)</span>
+<span class="nb">len</span><span class="p">(</span><span class="n">daily_rep_short</span><span class="p">[</span><span class="n">daily_rep_short</span><span class="p">[</span><span class="s1">&#39;Country/Region&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;China&quot;</span><span class="p">])</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Number of entries related to China:
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[42]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>33</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[43]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Extracting data related to Hubei province by screning out the text variables</span>
+<span class="c1"># and putting the result in list format</span>
+<span class="n">hubei_conf_0</span> <span class="o">=</span> <span class="n">world_conf_short</span><span class="p">[(</span><span class="n">world_conf_short</span><span class="p">[</span><span class="s1">&#39;Country/Region&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;China&#39;</span><span class="p">)</span> <span class="o">&amp;</span> \
+                                <span class="p">(</span><span class="n">world_conf_short</span><span class="p">[</span><span class="s1">&#39;Province/State&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Hubei&#39;</span><span class="p">)]</span>
+<span class="n">hubei_conf_0</span> <span class="o">=</span> <span class="n">hubei_conf_0</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">:]</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">tolist</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">hubei_conf_incr_0</span> <span class="o">=</span> <span class="n">calc_increments</span><span class="p">(</span><span class="n">hubei_conf_0</span><span class="p">)</span>
+
+<span class="n">hubei_recov_0</span> <span class="o">=</span> <span class="n">world_recov_short</span><span class="p">[(</span><span class="n">world_recov_short</span><span class="p">[</span><span class="s1">&#39;Country/Region&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;China&#39;</span><span class="p">)</span> <span class="o">&amp;</span> \
+                                  <span class="p">(</span><span class="n">world_recov_short</span><span class="p">[</span><span class="s1">&#39;Province/State&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Hubei&#39;</span><span class="p">)]</span>
+<span class="n">hubei_recov_0</span> <span class="o">=</span> <span class="n">hubei_recov_0</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">:]</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">tolist</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="n">hubei_deceas_0</span> <span class="o">=</span> <span class="n">world_deceas_short</span><span class="p">[(</span><span class="n">world_deceas_short</span><span class="p">[</span><span class="s1">&#39;Country/Region&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;China&#39;</span><span class="p">)</span> <span class="o">&amp;</span> \
+                                    <span class="p">(</span><span class="n">world_deceas_short</span><span class="p">[</span><span class="s1">&#39;Province/State&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Hubei&#39;</span><span class="p">)]</span>
+<span class="n">hubei_deceas_0</span> <span class="o">=</span> <span class="n">hubei_deceas_0</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">:]</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">tolist</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="c1"># Extracting data related to all the other provinces, making the sum</span>
+<span class="c1"># and putting the result in list format</span>
+<span class="n">restchina_conf_0</span> <span class="o">=</span> <span class="n">world_conf_short</span><span class="p">[(</span><span class="n">world_conf_short</span><span class="p">[</span><span class="s1">&#39;Country/Region&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;China&#39;</span><span class="p">)</span> <span class="o">&amp;</span> \
+                                    <span class="p">(</span><span class="n">world_conf_short</span><span class="p">[</span><span class="s1">&#39;Province/State&#39;</span><span class="p">]</span> <span class="o">!=</span>  <span class="s1">&#39;Hubei&#39;</span><span class="p">)]</span>
+<span class="n">restchina_conf_0</span> <span class="o">=</span> <span class="n">restchina_conf_0</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;Country/Region&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="n">restchina_conf_0</span> <span class="o">=</span> <span class="n">restchina_conf_0</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">tolist</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">restchina_conf_incr_0</span> <span class="o">=</span> <span class="n">calc_increments</span><span class="p">(</span><span class="n">restchina_conf_0</span><span class="p">)</span>
+
+<span class="n">restchina_recov_0</span> <span class="o">=</span> <span class="n">world_recov_short</span><span class="p">[(</span><span class="n">world_recov_short</span><span class="p">[</span><span class="s1">&#39;Country/Region&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;China&#39;</span><span class="p">)</span> <span class="o">&amp;</span> \
+                                      <span class="p">(</span><span class="n">world_recov_short</span><span class="p">[</span><span class="s1">&#39;Province/State&#39;</span><span class="p">]</span> <span class="o">!=</span>  <span class="s1">&#39;Hubei&#39;</span><span class="p">)]</span>
+<span class="n">restchina_recov_0</span> <span class="o">=</span> <span class="n">restchina_recov_0</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;Country/Region&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="n">restchina_recov_0</span> <span class="o">=</span> <span class="n">restchina_recov_0</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">tolist</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="n">restchina_deceas_0</span> <span class="o">=</span> <span class="n">world_deceas_short</span><span class="p">[(</span><span class="n">world_deceas_short</span><span class="p">[</span><span class="s1">&#39;Country/Region&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;China&#39;</span><span class="p">)</span> <span class="o">&amp;</span> \
+                                        <span class="p">(</span><span class="n">world_deceas_short</span><span class="p">[</span><span class="s1">&#39;Province/State&#39;</span><span class="p">]</span> <span class="o">!=</span>  <span class="s1">&#39;Hubei&#39;</span><span class="p">)]</span>
+<span class="n">restchina_deceas_0</span> <span class="o">=</span> <span class="n">restchina_deceas_0</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;Country/Region&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="n">restchina_deceas_0</span> <span class="o">=</span> <span class="n">restchina_deceas_0</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">tolist</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
 </pre></div>
 
     </div>
@@ -16779,16 +17240,68 @@ number of days: 53
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[41]:</div>
+<div class="prompt input_prompt">In&nbsp;[44]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Calling the function extract_country to extract data related to US</span>
-<span class="n">USA_0</span> <span class="o">=</span> <span class="n">extract_country</span><span class="p">(</span><span class="s2">&quot;US&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
-<span class="n">us_conf_0</span> <span class="o">=</span> <span class="n">USA_0</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-<span class="n">us_recov_0</span> <span class="o">=</span> <span class="n">USA_0</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
-<span class="n">us_deceas_0</span> <span class="o">=</span> <span class="n">USA_0</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Number of entries related to US:&quot;</span><span class="p">)</span>
+<span class="nb">len</span><span class="p">(</span><span class="n">daily_rep_short</span><span class="p">[</span><span class="n">daily_rep_short</span><span class="p">[</span><span class="s1">&#39;Country/Region&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;US&quot;</span><span class="p">])</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Number of entries related to US:
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[44]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>57</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[45]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Extracting data related to US, making the sum</span>
+<span class="c1"># and putting the result in list format</span>
+<span class="n">us_conf_0</span> <span class="o">=</span> <span class="n">world_conf_short</span><span class="p">[</span><span class="n">world_conf_short</span><span class="p">[</span><span class="s1">&#39;Country/Region&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;US&#39;</span><span class="p">]</span>
+<span class="n">us_conf_0</span> <span class="o">=</span> <span class="n">us_conf_0</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;Country/Region&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="n">us_conf_0</span> <span class="o">=</span> <span class="n">us_conf_0</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">tolist</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
 <span class="n">us_conf_incr_0</span> <span class="o">=</span> <span class="n">calc_increments</span><span class="p">(</span><span class="n">us_conf_0</span><span class="p">)</span>
-<span class="n">us_conf_pos</span> <span class="o">=</span> <span class="n">extract_non_null</span><span class="p">(</span><span class="n">us_conf_0</span><span class="p">)</span>
+
+<span class="n">us_recov_0</span> <span class="o">=</span> <span class="n">world_recov_short</span><span class="p">[</span><span class="n">world_recov_short</span><span class="p">[</span><span class="s1">&#39;Country/Region&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;US&#39;</span><span class="p">]</span>
+<span class="n">us_recov_0</span> <span class="o">=</span> <span class="n">us_recov_0</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;Country/Region&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="n">us_recov_0</span> <span class="o">=</span> <span class="n">us_recov_0</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">tolist</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="n">us_deceas_0</span> <span class="o">=</span> <span class="n">world_deceas_short</span><span class="p">[</span><span class="n">world_deceas_short</span><span class="p">[</span><span class="s1">&#39;Country/Region&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;US&#39;</span><span class="p">]</span>
+<span class="n">us_deceas_0</span> <span class="o">=</span> <span class="n">us_deceas_0</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;Country/Region&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="n">us_deceas_0</span> <span class="o">=</span> <span class="n">us_deceas_0</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">tolist</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
 </pre></div>
 
     </div>
@@ -16871,18 +17384,6 @@ number of days: 53
 <ul>
 <li>List obtained by using world_confirmed which contains the dates of all the days in m/d format</li>
 </ul>
-<p><br></br></p>
-<p><strong>finland_conf_x, finland_recov_x, finland_deceas_x</strong></p>
-<ul>
-<li>where x is the number of days to skip in the time series starting from the first one</li>
-<li>Lists obtained by using world_confirmed, world_recovered, world_deceased</li>
-<li>Data related to Finland has been extracted</li>
-<li>Data related to the first x days has been dropped</li>
-</ul>
-<p><strong>finland_conf_incr_x</strong></p>
-<ul>
-<li>List based on finland_conf_x containing the daily increments</li>
-</ul>
 <p><strong>days_fin</strong></p>
 <ul>
 <li>List based on days_tot where the first 6 days have been dropped</li>
@@ -16890,15 +17391,19 @@ number of days: 53
 <p><br></br></p>
 <p><strong>country_conf_x, country_recov_x, country_deceas_x</strong></p>
 <ul>
-<li>where country is one of the following ones:denmark, norway, sweden, italy, china</li>
+<li>where country is the Country written with small letters</li>
 <li>where x is the number of days to skip in the time series starting from the first one</li>
 <li>Lists obtained by using world_confirmed, world_recovered, world_deceased</li>
 <li>Data related to Country has been extracted</li>
 <li>Data related to the first x days has been dropped</li>
 </ul>
+<p><strong>country_conf_incr_x</strong></p>
+<ul>
+<li>List based on country_conf_x containing the daily increments</li>
+</ul>
 <p><strong>country_conf_pos</strong></p>
 <ul>
-<li>where country is one of the following ones: finland, denmark, norway, sweden</li>
+<li>where country is the Country written with small letters</li>
 <li>Lists based on country_conf_0</li>
 <li>Data related to days with zero cumulative cases in the Country has been dropped</li>
 </ul>
@@ -16934,7 +17439,7 @@ number of days: 53
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[42]:</div>
+<div class="prompt input_prompt">In&nbsp;[46]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Plotting daily cumulative cases in Finland</span>
@@ -16992,7 +17497,7 @@ number of days: 53
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[43]:</div>
+<div class="prompt input_prompt">In&nbsp;[47]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Plotting new daily confirmed Coronavirus cases in Finland</span>
@@ -17064,7 +17569,7 @@ number of days: 53
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[44]:</div>
+<div class="prompt input_prompt">In&nbsp;[48]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Comparing cumulative confirmed cases over time in Scandinavia</span>
@@ -17112,7 +17617,7 @@ number of days: 53
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[45]:</div>
+<div class="prompt input_prompt">In&nbsp;[49]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Comparing cumulative confirmed cases over time in Scandinavia</span>
@@ -17166,7 +17671,7 @@ number of days: 53
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[46]:</div>
+<div class="prompt input_prompt">In&nbsp;[50]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Comparing new daily confirmed Coronavirus cases in Scandinavia</span>
@@ -17214,7 +17719,7 @@ number of days: 53
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[47]:</div>
+<div class="prompt input_prompt">In&nbsp;[51]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Comparing cumulative recovered cases over time in Scandinavia</span>
@@ -17270,7 +17775,7 @@ number of days: 53
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[48]:</div>
+<div class="prompt input_prompt">In&nbsp;[52]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Comparing cumulative deceased cases over time in Scandinavia</span>
@@ -17337,7 +17842,7 @@ number of days: 53
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[49]:</div>
+<div class="prompt input_prompt">In&nbsp;[53]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Comparing cumulative confirmed cases over time for Finland,</span>
@@ -17387,7 +17892,7 @@ number of days: 53
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[50]:</div>
+<div class="prompt input_prompt">In&nbsp;[54]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Comparing new daily confirmed cases over time for Finland,</span>
@@ -17437,7 +17942,7 @@ number of days: 53
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[51]:</div>
+<div class="prompt input_prompt">In&nbsp;[55]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Comparing cumulative confirmed cases over time for Finland,</span>
@@ -17488,7 +17993,7 @@ number of days: 53
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[52]:</div>
+<div class="prompt input_prompt">In&nbsp;[56]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Comparing new daily confirmed cases for Finland,</span>
@@ -17555,7 +18060,7 @@ number of days: 53
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[53]:</div>
+<div class="prompt input_prompt">In&nbsp;[57]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Comparing cumulative confirmed Coronavirus cases in Finland and US</span>
@@ -17588,7 +18093,7 @@ number of days: 53
 
 
 <div class="output_png output_subarea ">
-<img src="data:image/png;base64,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
+<img src="data:image/png;base64,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YJ2Dhw7ns188kNaSquTM252c3bu2z1v/Trf7ujzj0fdZcJ3XXXddzjrrrCTJmWeembe97W03qfPJT34y733vezM1NZW73e1uefazn53t22/Y7q5du/K2t70tJ598cr7yla/kAQ94QB75yEcmSS677LK88Y1vzKte9ao89rGPzVve8pY88YlPzFOf+tT89m//dh784AfnJ3/yJxdsIwAAAGyE4zYIMYnhdUfSWne/te7xQkGISczVHWO2hz/84dm5c2d27tyZ29zmNrnyyitz+umnX7+8tZYXvOAF+cAHPpAtW7bkC1/4Qq688sokXWBjJshxv/vdL/v3789Xv/rVfPWrX82DH/zgJMmTnvSkvOtd71rRfgAAAMBqO26DEItlLCRdV4wXvvJvcuTIsWzbtiU/8YT75e5n3HLN27Zz587r72/dujVHjhy50fLXv/71ueqqq/KRj3wk27dvzxlnnJFDhw7N+dyZ7hgAAACw2R23QYhJ3P2MW+YXn/Vt+dinv5L73PnW6xKAmMTXvva13OY2t8n27dvz3ve+N5/73OcWrH/KKafklFNOyQc/+ME86EEPyutf//p1aikAAABM7oQOQiRdIGKzBB9mPOEJT8j3fu/35j73uU/OPvvs3P3ud1/0Ob/3e7+Xpz3taamqnHvuuevQSgAAAFiaajODItzMnH322e3SSy+9UdknPvGJ3OMe99igFt08eI0AAABYYzXfghN+ik4AAABgfQhCAAAAAOtCEAIAAABYF4IQAAAAwLoQhAAAAADWhSAEAAAAsC4EIVbZ/v37c+973/tGZRdccEF+7dd+LZdccknuf//756yzzso97nGPXHDBBRvTSAAAANgA2za6ASeS888/P29+85tz3/veN0ePHs2//du/bXSTAAAAYN2c8JkQn99/bT74nk/l8/uvXfNtffnLX85pp52WJNm6dWvuec97rvk2AQAAYLM4bjMh/vxP/iVf+uLXFqwzOnQ4V35xKq0lVcltb7cvO3dtn7f+19/u6/LQR99r2W167nOfm7vd7W4555xzct555+X888/Prl27lr0+AAAAjl+f339tPvfpq3PHO98qdzjjFhvdnFVxQmdCHLruSFrr7rfWPV6pqpq3/Od//udz6aWX5txzz80b3vCGnHfeeSveHgAAAMeff/noF/N7v/U3+at3fTK//8oPrUv2/no4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
 "
 >
 </div>
@@ -17608,7 +18113,7 @@ number of days: 53
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[54]:</div>
+<div class="prompt input_prompt">In&nbsp;[58]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Plotting daily cumulative cases in the all world</span>
@@ -17669,7 +18174,7 @@ number of days: 53
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[55]:</div>
+<div class="prompt input_prompt">In&nbsp;[59]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Reordering the columns</span>
@@ -17685,7 +18190,7 @@ number of days: 53
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[56]:</div>
+<div class="prompt input_prompt">In&nbsp;[60]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># The top 10 Countries by number of confirmed cases in descending order</span>
@@ -17715,7 +18220,7 @@ number of days: 53
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[56]:</div>
+    <div class="prompt output_prompt">Out[60]:</div>
 
 
 
@@ -17823,7 +18328,7 @@ number of days: 53
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[57]:</div>
+<div class="prompt input_prompt">In&nbsp;[61]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># The top 10 Countries by number of recovered cases in descending order</span>
@@ -17853,7 +18358,7 @@ number of days: 53
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[57]:</div>
+    <div class="prompt output_prompt">Out[61]:</div>
 
 
 
@@ -17961,7 +18466,7 @@ number of days: 53
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[58]:</div>
+<div class="prompt input_prompt">In&nbsp;[62]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># The top 10 Countries by number of deceased cases in descending order</span>
@@ -17991,7 +18496,7 @@ number of days: 53
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[58]:</div>
+    <div class="prompt output_prompt">Out[62]:</div>
 
 
 
@@ -18106,7 +18611,7 @@ number of days: 53
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[59]:</div>
+<div class="prompt input_prompt">In&nbsp;[63]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Visualizing the current status in Finland</span>
@@ -18153,6 +18658,8 @@ Deaths         0
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>The plots are shortly described in section 6.</p>
 <p>Due to the need of daily updates, no additional comment is added here.</p>
+<p>It would be interesting to analyze separately data from different regions in China and in Italy. This might be done in future versions of this file.</p>
+<p>Also, it might be useful to add bar charts containing data from the daily reports for different Countries.</p>
 
 </div>
 </div>
@@ -18183,7 +18690,7 @@ Deaths         0
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[60]:</div>
+<div class="prompt input_prompt">In&nbsp;[64]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Last plotted day:&quot;</span><span class="p">,</span> <span class="n">dt</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">strptime</span><span class="p">(</span><span class="n">last_day</span><span class="p">,</span> <span class="s2">&quot;%m-</span><span class="si">%d</span><span class="s2">-%Y&quot;</span><span class="p">)</span><span class="o">.</span>\
