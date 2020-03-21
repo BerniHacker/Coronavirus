@@ -19,6 +19,7 @@ File name / Description | link
 <code>Coronavirus_Finland.html</code> This file is the html version of the file below. | http://htmlpreview.github.io/?https://github.com/BerniHacker/Coronavirus/blob/master/Coronavirus_Finland.html
 <code>Coronavirus_Finland.ipynb</code> This file contains visualizations realated to the spread of Coronavirus in Finland. All the code used to dump, complete, prepare and visualize the data in included. | https://github.com/BerniHacker/Coronavirus/blob/master/Coronavirus_Finland.ipynb
 <code>automat.sh</code> This is a shell script to automatize the data pipeline. | https://github.com/BerniHacker/Coronavirus/blob/master/automat.sh
+<code>Legal.txt</code> Legal note. | https://github.com/BerniHacker/Coronavirus/blob/master/Legal.txt
 
 ## 2. How to install the data pipeline
 
