@@ -15955,8 +15955,8 @@ and amount of null values for each column:
 US                57
 China             33
 Canada            12
-France             9
 Australia          9
+France             9
 United Kingdom     7
 Netherlands        4
 Denmark            3
@@ -17866,6 +17866,7 @@ number of days: 55
 <span class="n">hubei_deceas_0</span> <span class="o">=</span> <span class="n">world_deceas_short</span><span class="p">[(</span><span class="n">world_deceas_short</span><span class="p">[</span><span class="s1">&#39;Country/Region&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;China&#39;</span><span class="p">)</span> <span class="o">&amp;</span> \
                                     <span class="p">(</span><span class="n">world_deceas_short</span><span class="p">[</span><span class="s1">&#39;Province/State&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Hubei&#39;</span><span class="p">)]</span>
 <span class="n">hubei_deceas_0</span> <span class="o">=</span> <span class="n">hubei_deceas_0</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">:]</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">tolist</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">hubei_conf_0_perc</span> <span class="o">=</span> <span class="n">pop_perc</span><span class="p">(</span><span class="n">hubei_conf_0</span><span class="p">,</span> <span class="n">hubei_pop</span><span class="p">)</span>
 
 <span class="c1"># Extracting data related to all the other provinces, making the sum</span>
 <span class="c1"># and putting the result in list format</span>
@@ -17884,6 +17885,7 @@ number of days: 55
                                         <span class="p">(</span><span class="n">world_deceas_short</span><span class="p">[</span><span class="s1">&#39;Province/State&#39;</span><span class="p">]</span> <span class="o">!=</span>  <span class="s1">&#39;Hubei&#39;</span><span class="p">)]</span>
 <span class="n">restchina_deceas_0</span> <span class="o">=</span> <span class="n">restchina_deceas_0</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;Country/Region&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
 <span class="n">restchina_deceas_0</span> <span class="o">=</span> <span class="n">restchina_deceas_0</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">tolist</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">restchina_conf_0_perc</span> <span class="o">=</span> <span class="n">pop_perc</span><span class="p">(</span><span class="n">restchina_conf_0</span><span class="p">,</span> <span class="n">restchina_pop</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -18918,7 +18920,7 @@ number of days: 55
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Comment to the plot</strong></p>
-<p>The first plot shows that the shape of the cumulative curves for the two areas in the Country are very similar. The main visible difference is the amplitude of the curces.</p>
+<p>The first plot shows that the shape of the cumulative curves for the two areas in the Country are very similar. The main visible difference is the amplitude of the curves.</p>
 
 </div>
 </div>
