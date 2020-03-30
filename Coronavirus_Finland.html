@@ -13124,20 +13124,22 @@ div#notebook {
 <font color='white'>............</font><a href="#5.4.8.">5.4.8. Data from US</a><br>
 <font color='white'>............</font><a href="#5.4.9.">5.4.9. Data from China</a><br>
 <font color='white'>....</font><a href="#5.5.">5.5. Summary of the created datasets</a><br>
-<a href="#6.">6. Data Visualization</a><br>
-<font color='white'>....</font><a href="#6.1.">6.1. Finnish Internal Situation</a><br>
-<font color='white'>....</font><a href="#6.2.">6.2. Comparison with Other Scandinavian Countries</a><br>
-<font color='white'>....</font><a href="#6.3.">6.3. Comparison with Italy and other European Countries</a><br>
-<font color='white'>....</font><a href="#6.4.">6.4. Comparison with UK and US</a><br>
-<font color='white'>....</font><a href="#6.5.">6.5. Normalizing by Country population</a><br>
-<font color='white'>....</font><a href="#6.6.">6.6. Situation in China</a><br>
-<font color='white'>....</font><a href="#6.7.">6.7. World View</a><br>
-<a href="#7.">7. Statistics</a><br>
-<font color='white'>....</font><a href="#7.1.">7.1. World view</a><br>
-<font color='white'>....</font><a href="#7.3.">7.3. Top Ten Countries</a><br>
-<font color='white'>....</font><a href="#7.3.">7.3. Finland</a><br>
-<a href="#8.">8. Conclusions</a><br>
-<a href="#9.">9. Acknowledgements</a><br></p>
+<a href="#6.">6. Domain-Specific Concepts</a><br>
+<a href="#7.">7. Data Visualization</a><br>
+<font color='white'>....</font><a href="#7.1.">7.1. General Comments to the Plots</a><br>
+<font color='white'>....</font><a href="#7.2.">7.2. Finnish Internal Situation</a><br>
+<font color='white'>....</font><a href="#7.3.">7.3. Comparison with Other Scandinavian Countries</a><br>
+<font color='white'>....</font><a href="#7.4.">7.4. Comparison with Italy and other European Countries</a><br>
+<font color='white'>....</font><a href="#7.5.">7.5. Comparison with UK and US</a><br>
+<font color='white'>....</font><a href="#7.6.">7.6. Normalizing by Country population</a><br>
+<font color='white'>....</font><a href="#7.7.">7.7. Situation in China</a><br>
+<font color='white'>....</font><a href="#7.8.">7.8. World View</a><br>
+<a href="#8.">8. Statistics</a><br>
+<font color='white'>....</font><a href="#8.1.">8.1. World view</a><br>
+<font color='white'>....</font><a href="#8.2.">8.2. Top Ten Countries</a><br>
+<font color='white'>....</font><a href="#8.3.">8.3. Finland</a><br>
+<a href="#9.">9. Conclusions</a><br>
+<a href="#10.">10. Acknowledgements</a><br></p>
 
 </div>
 </div>
@@ -13167,7 +13169,7 @@ div#notebook {
 <ul>
 <li>The code has not been peer-reviewed. If someone is wishing to do it, please contact the author.</li>
 <li>The data related to the last day might be incomplete.</li>
-<li>More clarifications are contained in section 6 close to the plots.</li>
+<li>More clarifications are contained in section 7 close to the plots.</li>
 <li>See also the <a href="Legal.txt">legal disclaimer</a>.</li>
 </ul>
 <p><em>The spread of virus follows the rules of mathematics and statistics (Dr. Katharina Hauck, <a href="https://www.imperial.ac.uk/people/k.hauck">https://www.imperial.ac.uk/people/k.hauck</a>).</em></p>
@@ -13195,6 +13197,8 @@ https://www.arcgis.com/apps/opsdashboard/index.html#/bda7594740fd40299423467b48e
 <a href="https://finland-coronavirus-map.netlify.com/">https://finland-coronavirus-map.netlify.com/</a></p>
 <p><sub>/5/ <a href="https://www.ecdc.europa.eu/en/novel-coronavirus-china">European Centre for Disease Prevention and Control</a><br>
 <a href="https://www.ecdc.europa.eu/en/novel-coronavirus-china">https://www.ecdc.europa.eu/en/novel-coronavirus-china</a></p>
+<p><sub>/6/ <a href="https://www.coursera.org/learn/covid-19/home/welcome">Coursera: Let's Talk About COVID-19</a><br>
+<a href="https://www.coursera.org/learn/covid-19/home/welcome">https://www.coursera.org/learn/covid-19/home/welcome</a></p>
 
 </div>
 </div>
@@ -13239,7 +13243,7 @@ https://www.arcgis.com/apps/opsdashboard/index.html#/bda7594740fd40299423467b48e
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="3.1.-Dataframe-handling">3.1. Dataframe handling<a name="3.1." /><a class="anchor-link" href="#3.1.-Dataframe-handling">&#182;</a></h3>
+<h3 id="3.1.-Dataframes-and-lists-handling">3.1. Dataframes and lists handling<a name="3.1." /><a class="anchor-link" href="#3.1.-Dataframes-and-lists-handling">&#182;</a></h3>
 </div>
 </div>
 </div>
@@ -16737,18 +16741,18 @@ NOTE: those figures are from year 2018.
 
 <div class="output_html rendered_html output_subarea output_execute_result">
 <style  type="text/css" >
-</style><table id="T_32364460_728a_11ea_912b_0800274a5039" ><thead>    <tr>        <th class="col_heading level0 col0" >Date</th>        <th class="col_heading level0 col1" >Actions</th>    </tr></thead><tbody>
+</style><table id="T_3de91450_7298_11ea_912b_0800274a5039" ><thead>    <tr>        <th class="col_heading level0 col0" >Date</th>        <th class="col_heading level0 col1" >Actions</th>    </tr></thead><tbody>
                 <tr>
-                                <td id="T_32364460_728a_11ea_912b_0800274a5039row0_col0" class="data row0 col0" >12.3.</td>
-                        <td id="T_32364460_728a_11ea_912b_0800274a5039row0_col1" class="data row0 col1" >First measures: gathering of more than 500 people banned</td>
+                                <td id="T_3de91450_7298_11ea_912b_0800274a5039row0_col0" class="data row0 col0" >12.3.</td>
+                        <td id="T_3de91450_7298_11ea_912b_0800274a5039row0_col1" class="data row0 col1" >First measures: gathering of more than 500 people banned</td>
             </tr>
             <tr>
-                                <td id="T_32364460_728a_11ea_912b_0800274a5039row1_col0" class="data row1 col0" >16.3.</td>
-                        <td id="T_32364460_728a_11ea_912b_0800274a5039row1_col1" class="data row1 col1" >State of emergency declared: closing shools, universities, museums, theatres, libraries, sport facilities; gathering of more than 10 people banned</td>
+                                <td id="T_3de91450_7298_11ea_912b_0800274a5039row1_col0" class="data row1 col0" >16.3.</td>
+                        <td id="T_3de91450_7298_11ea_912b_0800274a5039row1_col1" class="data row1 col1" >State of emergency declared: closing shools, universities, museums, theatres, libraries, sport facilities; gathering of more than 10 people banned</td>
             </tr>
             <tr>
-                                <td id="T_32364460_728a_11ea_912b_0800274a5039row2_col0" class="data row2 col0" >28.3.</td>
-                        <td id="T_32364460_728a_11ea_912b_0800274a5039row2_col1" class="data row2 col1" >Additional measures: Uusimaa region borders closed, restaurant dining forbidden</td>
+                                <td id="T_3de91450_7298_11ea_912b_0800274a5039row2_col0" class="data row2 col0" >28.3.</td>
+                        <td id="T_3de91450_7298_11ea_912b_0800274a5039row2_col1" class="data row2 col1" >Additional measures: Uusimaa region borders closed, restaurant dining forbidden</td>
             </tr>
     </tbody></table>
 </div>
@@ -18924,22 +18928,52 @@ number of days: 62
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="6.-Data-Visualization">6. Data Visualization<a name="6." /><a class="anchor-link" href="#6.-Data-Visualization">&#182;</a></h2>
+<h2 id="6.-Domain-Specific-Concepts">6. Domain-Specific Concepts<a name="6." /><a class="anchor-link" href="#6.-Domain-Specific-Concepts">&#182;</a></h2>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>A line plot containing confirmed cases each day as well as deceased cases has been produced.</p>
-<p>A second line plot containing the new confirmed daily cases which shows the speed at which the virus is spreading has been added.</p>
-<p>Also, Finnish curves have been compared to the curves of other Scandinavian and European Countries as well as UK and US.</p>
-<p>Finally, global worldwide curves have been produced.</p>
-<p>Note that the active cases at each day are given by the confirmed cases minus the recovered cases minus the deceased cases.</p>
-<p><strong>NOTE:</strong> The number of confirmed cases is very likely below the number of the actual cases since there might be many infected persons showing no symptoms.</p>
-<hr>
-<p>"The only real data we have is from the flights used by a number of Countries to repatriate their citizens. The all population was tested on those planes. If the population samples given by the passengers of those flights would be representative of the all population, we could conclude that the epidemic is at least 3 times larger compared to what the collected data shows.</p>
-<p>Note that, by assuming that deaths are more likely to be detected, this means that the actual mortality rate is 3 times smaller compared to the ratio between the counted deceased cases and the counted confirmed cases. This would give a mortality rate around 1% with a quite large level of uncertainity, meaning that the actual number might vary from 0.25% (close to the figures of an influence pandemic) to 4% (close to 1918 Spanish flue epidemic)."</p>
+<p>The <strong>Case Fatality Ratio (CFR)</strong> is the proportion of detected cases of a given disease that die as a result of it.</p>
+<p>Surveillance is typically biased towards detecting clinically severe cases, particularly at the start of an epidemic when diagnostic capacity is limited. This leads to an over estimation of the CRF.</p>
+<p>On the other hand, there is a time interval between the onset of symptoms and death or recovery. Therefore, measuring the simple ratio deceased/infected during a growing epidemic does not allow to observe the outcome of all the infected cases, leading to a under estimation of the CFR.</p>
+<p><a href="https://www.imperial.ac.uk/media/imperial-college/medicine/sph/ide/gida-fellowships/Imperial-College-COVID19-severity-10-02-2020.pdf">https://www.imperial.ac.uk/media/imperial-college/medicine/sph/ide/gida-fellowships/Imperial-College-COVID19-severity-10-02-2020.pdf</a></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="7.-Data-Visualization">7. Data Visualization<a name="7." /><a class="anchor-link" href="#7.-Data-Visualization">&#182;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="7.1.-General-Comments-to-the-Plots">7.1. General Comments to the Plots<a name="7.1." /><a class="anchor-link" href="#7.1.-General-Comments-to-the-Plots">&#182;</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Five main curves are shown in the plots contained in this section:</p>
+<ul>
+<li>Cumulative confirmed cases</li>
+<li>Cumulative recovered cases</li>
+<li>Cumulative deceased cases</li>
+<li>Cumulative active cases</li>
+<li>Daily increments in the confirmed cases</li>
+</ul>
+<p>The first three curves show the cumulative cases in a certain region since the start of the epidemic.</p>
+<p>The <strong>cumulative confirmed cases</strong> curve is expected to grow exponentially and then slowly smoothing out towards a horizontal shape. Government decisions and people behavior can affect the way this curve looks like. The aim is to keep the curve not too steep in order not to saturate the capacity of the hospitals in the Country. However, it should be noted that the effects of Government and people actions are not immediate due to the incubation period.</p>
+<p>The <strong>cumulative active cases</strong> are given by the confirmed cases minus the recovered cases minus the deceased cases. It is the only of the cumulative cases curves that can decrease over time and this happens when the number of confirmed cases grows slower than the combined number of recovered and deceased cases.</p>
+<p>The <strong>new confirmed daily cases</strong> shows the speed at which the virus is spreading. This curve is expected to have a (upside down) bell shape. This curve shows the daily values and therefore is shows also some noise.</p>
+<p><strong>NOTE:</strong> The number of the actual confirmed cases is very likely above the number of the counted confirmed cases since not all population is tested and there might be many infected persons showing no symptoms.</p>
+<p>"The only real data we have is from the flights used by a number of Countries to repatriate their citizens. The all population was tested on those planes. If the population samples given by the passengers of those flights would be representative of the all population, we could conclude that the epidemic is at least 3 times larger compared to what the collected data shows."</p>
 <p>Feb 12th, Prof. Neil Ferguson, <a href="https://www.imperial.ac.uk/people/neil.ferguson">https://www.imperial.ac.uk/people/neil.ferguson</a></p>
 
 </div>
@@ -18948,7 +18982,7 @@ number of days: 62
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="6.1.-Finnish-Internal-Situation-">6.1. Finnish Internal Situation <a name="6.1." /><a class="anchor-link" href="#6.1.-Finnish-Internal-Situation-">&#182;</a></h3>
+<h3 id="7.2.-Finnish-Internal-Situation-">7.2. Finnish Internal Situation <a name="7.2." /><a class="anchor-link" href="#7.2.-Finnish-Internal-Situation-">&#182;</a></h3>
 </div>
 </div>
 </div>
@@ -19038,18 +19072,18 @@ number of days: 62
 
 <div class="output_html rendered_html output_subarea output_execute_result">
 <style  type="text/css" >
-</style><table id="T_34381fa4_728a_11ea_912b_0800274a5039" ><thead>    <tr>        <th class="col_heading level0 col0" >Date</th>        <th class="col_heading level0 col1" >Actions</th>    </tr></thead><tbody>
+</style><table id="T_3fbbc7d2_7298_11ea_912b_0800274a5039" ><thead>    <tr>        <th class="col_heading level0 col0" >Date</th>        <th class="col_heading level0 col1" >Actions</th>    </tr></thead><tbody>
                 <tr>
-                                <td id="T_34381fa4_728a_11ea_912b_0800274a5039row0_col0" class="data row0 col0" >12.3.</td>
-                        <td id="T_34381fa4_728a_11ea_912b_0800274a5039row0_col1" class="data row0 col1" >First measures: gathering of more than 500 people banned</td>
+                                <td id="T_3fbbc7d2_7298_11ea_912b_0800274a5039row0_col0" class="data row0 col0" >12.3.</td>
+                        <td id="T_3fbbc7d2_7298_11ea_912b_0800274a5039row0_col1" class="data row0 col1" >First measures: gathering of more than 500 people banned</td>
             </tr>
             <tr>
-                                <td id="T_34381fa4_728a_11ea_912b_0800274a5039row1_col0" class="data row1 col0" >16.3.</td>
-                        <td id="T_34381fa4_728a_11ea_912b_0800274a5039row1_col1" class="data row1 col1" >State of emergency declared: closing shools, universities, museums, theatres, libraries, sport facilities; gathering of more than 10 people banned</td>
+                                <td id="T_3fbbc7d2_7298_11ea_912b_0800274a5039row1_col0" class="data row1 col0" >16.3.</td>
+                        <td id="T_3fbbc7d2_7298_11ea_912b_0800274a5039row1_col1" class="data row1 col1" >State of emergency declared: closing shools, universities, museums, theatres, libraries, sport facilities; gathering of more than 10 people banned</td>
             </tr>
             <tr>
-                                <td id="T_34381fa4_728a_11ea_912b_0800274a5039row2_col0" class="data row2 col0" >28.3.</td>
-                        <td id="T_34381fa4_728a_11ea_912b_0800274a5039row2_col1" class="data row2 col1" >Additional measures: Uusimaa region borders closed, restaurant dining forbidden</td>
+                                <td id="T_3fbbc7d2_7298_11ea_912b_0800274a5039row2_col0" class="data row2 col0" >28.3.</td>
+                        <td id="T_3fbbc7d2_7298_11ea_912b_0800274a5039row2_col1" class="data row2 col1" >Additional measures: Uusimaa region borders closed, restaurant dining forbidden</td>
             </tr>
     </tbody></table>
 </div>
@@ -19059,17 +19093,6 @@ number of days: 62
 </div>
 </div>
 
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Description of the plot above</strong></p>
-<p>The blue curve represents the cumulative confirmed cases. Government decisions and people behavior can affect the way the blue curve looks like. The aim is to keep the curve not too steep in order not to saturate the capacity of the hospitals in the Country. However, it should be noted that the effects are not immediate due to the incubation period.</p>
-<p>The red curve represents the deceased cases and the goal is obviously to keep it as low as possible.</p>
-<p>Finally, it shall be not be forgotten that the number of actual infected cases might be higher than the number of confirmed cases due to the fact that not all the population has been tested.</p>
-
-</div>
-</div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
@@ -19121,16 +19144,7 @@ number of days: 62
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Description of the plot above</strong></p>
-<p>This plot shows the new daily confirmed cases. Therefore, it shows the speed at which the virus is spreading. The is also called epidemic curve and it is expected to have a (upside down) bell shape. This curve shows the daily values and therefore is shows also some noise. By using a bar plot where each bar would contain the value of few days, the noise would be reduced.</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="6.2.-Comparison-with-Other-Scandinavian-Countries-">6.2. Comparison with Other Scandinavian Countries <a name="6.2." /><a class="anchor-link" href="#6.2.-Comparison-with-Other-Scandinavian-Countries-">&#182;</a></h3>
+<h3 id="7.3.-Comparison-with-Other-Scandinavian-Countries-">7.3. Comparison with Other Scandinavian Countries <a name="7.3." /><a class="anchor-link" href="#7.3.-Comparison-with-Other-Scandinavian-Countries-">&#182;</a></h3>
 </div>
 </div>
 </div>
@@ -19138,7 +19152,7 @@ number of days: 62
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Description of the plots of this section</strong></p>
-<p>It appears that the Finnish curve is quite smooth compared to the other curces. Only Iceland has a smoother curve. This would suggest that the virus is not spreading faster in Finland compared to mosy of the other Scandinavian Countries. By shifting all the curves so that they start for each Country in the day of the first confirmed case, the Finnish curce is the slowest to grow. See also the note below.</p>
+<p>It appears that the Finnish curve is quite smooth compared to the other curces. Only Iceland has a smoother curve. This would suggest that the virus is not spreading faster in Finland compared to mosy of the other Scandinavian Countries. By shifting all the curves so that they start for each Country in the day of the first confirmed case, the Finnish curve is the slowest to grow. See also the note below.</p>
 <p>Even though the virus started later in Finland, the first recovered case happened much earlier than the other Scandinavian Countries. However, the biggest number of recovered cases is in Sweden.</p>
 <p>Finland has also the lowest number of deceased cases (Sweden has the highest).</p>
 <p><strong>NOTE:</strong> It should be noted that the testing policy in each Country affects considerably the way the curve looks like. The less people you test, the better the curve looks like.</p>
@@ -19411,7 +19425,7 @@ number of days: 62
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="6.3.-Comparison-with-Italy-and-other-European-Countries">6.3. Comparison with Italy and other European Countries<a name="6.3." /><a class="anchor-link" href="#6.3.-Comparison-with-Italy-and-other-European-Countries">&#182;</a></h3>
+<h3 id="7.4.-Comparison-with-Italy-and-other-European-Countries">7.4. Comparison with Italy and other European Countries<a name="7.4." /><a class="anchor-link" href="#7.4.-Comparison-with-Italy-and-other-European-Countries">&#182;</a></h3>
 </div>
 </div>
 </div>
@@ -19636,7 +19650,7 @@ number of days: 62
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="6.4.-Comparison-with-UK-and-US">6.4. Comparison with UK and US<a name="6.4." /><a class="anchor-link" href="#6.4.-Comparison-with-UK-and-US">&#182;</a></h3>
+<h3 id="7.5.-Comparison-with-UK-and-US">7.5. Comparison with UK and US<a name="7.5." /><a class="anchor-link" href="#7.5.-Comparison-with-UK-and-US">&#182;</a></h3>
 </div>
 </div>
 </div>
@@ -19747,7 +19761,7 @@ number of days: 62
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="6.5.-Normalizing-by-Country-population-">6.5. Normalizing by Country population <a name="6.5." /><a class="anchor-link" href="#6.5.-Normalizing-by-Country-population-">&#182;</a></h3>
+<h3 id="7.6.-Normalizing-by-Country-population-">7.6. Normalizing by Country population <a name="7.6." /><a class="anchor-link" href="#7.6.-Normalizing-by-Country-population-">&#182;</a></h3>
 </div>
 </div>
 </div>
@@ -19925,7 +19939,7 @@ number of days: 62
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Comments to the plot above</strong></p>
-<p>Luxembourg has the a higher number of confirmed cases per capita that Iceland.</p>
+<p>Luxembourg has the a higher number of confirmed cases per capita than Iceland.</p>
 
 </div>
 </div>
@@ -19987,7 +20001,7 @@ number of days: 62
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Comments to the plot</strong></p>
-<p>Note that one of the reasons why UK and Finland curves started pretty lowe might be due to the fact that they are quite isolated geographically and therefore the virus started to spread later.</p>
+<p>Note that one of the reasons why UK and Finland curves started pretty low might be due to the fact that they are quite isolated geographically and therefore the virus started to spread later.</p>
 <p>However, those curves clearly show that in Countries that have not taken prompt containment actions, as UK and US, those curves started to take a steeper shape.</p>
 
 </div>
@@ -19996,7 +20010,7 @@ number of days: 62
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="6.6.-Situation-in-China-">6.6. Situation in China <a name="6.6." /><a class="anchor-link" href="#6.6.-Situation-in-China-">&#182;</a></h3>
+<h3 id="7.7.-Situation-in-China-">7.7. Situation in China <a name="7.7." /><a class="anchor-link" href="#7.7.-Situation-in-China-">&#182;</a></h3>
 </div>
 </div>
 </div>
@@ -20005,8 +20019,7 @@ number of days: 62
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Comments to the plot</strong></p>
 <p>The first plot shows that the shape of the cumulative curves for the two areas in the Country are very similar. The main visible difference is the amplitude of the curves.</p>
-<p>Note that the active cases curve is  the only cumulative curve that can decrease and this happens when the number of confirmed cases grows slower than the combined number of recovered and deceased cases.</p>
-<p>Finally, it happears that the number of confirmed cases in China outside Hubei province shows a tendency to grow again.</p>
+<p>It happears that the number of confirmed cases in China outside Hubei province shows a tendency to grow again.</p>
 
 </div>
 </div>
@@ -20110,7 +20123,7 @@ number of days: 62
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="6.7.-World-View">6.7. World View<a name="6.7." /><a class="anchor-link" href="#6.7.-World-View">&#182;</a></h3>
+<h3 id="7.8.-World-View">7.8. World View<a name="7.8." /><a class="anchor-link" href="#7.8.-World-View">&#182;</a></h3>
 </div>
 </div>
 </div>
@@ -20220,14 +20233,14 @@ number of days: 62
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="7.-Statistics-">7. Statistics <a name="7." /><a class="anchor-link" href="#7.-Statistics-">&#182;</a></h2>
+<h2 id="8.-Statistics-">8. Statistics <a name="8." /><a class="anchor-link" href="#8.-Statistics-">&#182;</a></h2>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="7.1.-World-View-">7.1. World View <a name="7.1." /><a class="anchor-link" href="#7.1.-World-View-">&#182;</a></h3>
+<h3 id="8.1.-World-View-">8.1. World View <a name="8.1." /><a class="anchor-link" href="#8.1.-World-View-">&#182;</a></h3>
 </div>
 </div>
 </div>
@@ -20326,7 +20339,7 @@ IMPORTANT NOTE: the actual mortality could be much lower
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="7.2.-Top-Ten-Countries-">7.2. Top Ten Countries <a name="7.2." /><a class="anchor-link" href="#7.2.-Top-Ten-Countries-">&#182;</a></h3>
+<h3 id="8.2.-Top-Ten-Countries-">8.2. Top Ten Countries <a name="8.2." /><a class="anchor-link" href="#8.2.-Top-Ten-Countries-">&#182;</a></h3>
 </div>
 </div>
 </div>
@@ -20668,7 +20681,7 @@ For example, for France the numbers include:
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="7.3.-Finland-">7.3. Finland <a name="7.3." /><a class="anchor-link" href="#7.3.-Finland-">&#182;</a></h3>
+<h3 id="8.3.-Finland-">8.3. Finland <a name="8.3." /><a class="anchor-link" href="#8.3.-Finland-">&#182;</a></h3>
 </div>
 </div>
 </div>
@@ -20713,16 +20726,15 @@ Active       1219
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="8.-Conclusions-">8. Conclusions <a name="8." /><a class="anchor-link" href="#8.-Conclusions-">&#182;</a></h2>
+<h2 id="9.-Conclusions-">9. Conclusions <a name="9." /><a class="anchor-link" href="#9.-Conclusions-">&#182;</a></h2>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>The plots are shortly described in section 6.</p>
+<p>The plots are shortly described in section 7.</p>
 <p>Due to the need of daily updates, no additional comment is added here.</p>
-<p>It might be useful to add bar charts containing data from the daily reports for different Countries. Also, the new daily cases (increments) should be shown with a bar chart rather than with a line plot. This might be done in future versions of this file.</p>
 
 </div>
 </div>
@@ -20730,7 +20742,7 @@ Active       1219
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="9.-Acknowledgements-">9. Acknowledgements <a name="9." /><a class="anchor-link" href="#9.-Acknowledgements-">&#182;</a></h2>
+<h2 id="10.-Acknowledgements-">10. Acknowledgements <a name="10." /><a class="anchor-link" href="#10.-Acknowledgements-">&#182;</a></h2>
 </div>
 </div>
 </div>
@@ -20738,6 +20750,7 @@ Active       1219
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Many thanks to <a href="https://www.jhu.edu/">Johns Hokpins University</a> for sharing and maintaining daily the source csv files.</p>
+<p>Many thanks to Coursera for providing a very informative <a href="https://www.coursera.org/learn/covid-19/home/welcome">course</a>.</p>
 <p>Many thanks to colleagues and friends who have contributed by providing links and comments.</p>
 
 </div>
