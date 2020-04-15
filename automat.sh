@@ -6,6 +6,8 @@
 # Run the following command once in the git directory first:
 # $ git config --global credential.helper store
 
+start_time_s=$(date +%s)
+
 # Going to the source git repository
 printf "\nPulling the source data data\n"
 cd JHU_COVID-19/COVID-19
@@ -35,3 +37,9 @@ git commit -m "daily_update"
 # Pushing the notebook to the remote repository
 git push origin master
 
+end_time_s=$(date +%s) 
+# Calculating the script duration
+duration=$(($end_time_s - $start_time_s))
+# Printing the script's duration
+printf "\nScript's duration: %02d:%02d:%02d\n\n" \
+$(($duration/3600)) $(($duration%3600/60)) $(($duration%60))
