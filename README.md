@@ -1,6 +1,6 @@
 # Coronavirus COVID-19 Cases in Finland
 
-There are a few good dashboards in the Web about to this topic (for example, by Johns Hokpins University and by Tableau). In addition, there is a good site with latest information about Finland broken down by Region. Still, it might be beneficial to manipulate the data in order, for example, to compare Finnish curves with curves from other Countries.
+There are a few good dashboards in the Web about this topic (for example, by Johns Hokpins University and by Tableau). In addition, there is a good site with latest information about Finland broken down by Region. Still, it might be beneficial to manipulate the data in order, for example, to compare Finnish curves with curves from other Countries.
 
 Having updated plots is very useful both for authorities and for the population in order to make fact-based decisions that help to contain the positive cases so not to overload the hospitals and therefore minimizing the casualties.
 
