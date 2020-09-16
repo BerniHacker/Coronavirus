@@ -1,12 +1,12 @@
 # Coronavirus COVID-19 Cases in Finland
 
-There are a few good dashboards in the Web about this topic (for example, by Johns Hokpins University and by Tableau). In addition, there is a good site with latest information about Finland broken down by Region. Still, it might be beneficial to manipulate the data in order, for example, to compare Finnish curves with curves from other Countries.
+There are a few good dashboards in the Web about this topic (for example, by Johns Hokpins University and by Tableau). In addition, there is a good site with latest information about Finland. Still, it might be beneficial to manipulate the data in order, for example, to compare Finnish curves with curves from other Countries.
 
 Having updated plots is very useful both for authorities and for the population in order to make fact-based decisions that help to contain the positive cases so not to overload the hospitals and therefore minimizing the casualties.
 
 Comparing Finnish curves to those of neighboring Countries might provide useful insights since, in addition to the geographical proximity, those Countries have certain similarities in culture, behavior patterns and may be genetics.
 
-_Currently, those files are updated daily around 06:00 - 08:00 UTC. Also, more plots will be added in the future._
+_This file is not updated any longer. The last update was on September 15th 2020._
 
 **If you are not interested in the code used to produce the plots, open the file in this [link](http://htmlpreview.github.io/?https://github.com/BerniHacker/Coronavirus/blob/master/Coronavirus_Finland.html), go to section 6 and onward and focus on the plots, the tables and the plain text. Read also the disclaimers in section 1.**
 
