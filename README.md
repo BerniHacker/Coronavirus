@@ -6,7 +6,7 @@ Having updated plots is very useful both for authorities and for the population 
 
 Comparing Finnish curves to those of neighboring Countries might provide useful insights since, in addition to the geographical proximity, those Countries have certain similarities in culture, behavior patterns and may be genetics.
 
-_This file is not updated any longer. The last update was on September 15th 2020._
+_This file is not updated any longer daily._
 
 **If you are not interested in the code used to produce the plots, open the file in this [link](http://htmlpreview.github.io/?https://github.com/BerniHacker/Coronavirus/blob/master/Coronavirus_Finland.html), go to section 6 and onward and focus on the plots, the tables and the plain text. Read also the disclaimers in section 1.**
 
