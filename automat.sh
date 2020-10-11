@@ -16,7 +16,8 @@ git pull
 
 # Going back to the project repository
 printf "\nExecuting the notebook\n"
-cd /home/bernardo/Coronavirus
+cd ..
+cd ..
 # Executing the notebook
 /home/bernardo/.local/bin/jupyter-nbconvert \
                       --execute \
